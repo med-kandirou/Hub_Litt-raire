@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -11,20 +14,24 @@ class Users extends Controller
    
     public function login(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => ['required'],
-            'pass' => 'required',
-        ]);
-        if($validator->fails()){
-            $response=[
-                'success'=>'fail',
-                'message'=>$validator->errors()
-            ];
-            return $response;
-        }
-        else{
-            return 'ekt';
-        }
+        // $validator = Validator::make($request->all(), [
+        //     'email' => ['required'],
+        //     'password' => 'required',
+        // ]);
+        // if($validator->fails()){
+        //     $response=[
+        //         'success'=>'fail',
+        //         'message'=>$validator->errors()
+        //     ];
+        //     return $response;
+        // }
+        // else{
+        //     return 'ekt';
+        // }
+
+        $user = DB::table('Users')->where('email',$request->input('email'))->where('password',$request->input('password'))->first();
+        return $user;
+
     }
 
     public function signup(Request $request)
@@ -34,7 +41,7 @@ class Users extends Controller
             'prenom'=>'required',
             'email' => ['required','email'],
             'password' => 'required',
-            'Confirmation'=>'required|some:password'
+            'confirmation'=>'required|same:password'
         ]);
         if($validator->fails()){
             $response=[
@@ -44,7 +51,14 @@ class Users extends Controller
             return $response;
         }
         else{
-            return 'ekt';
+            $user=new User();
+            $user->nom=$request->input('nom');
+            $user->prenom=$request->input('prenom');
+            $user->email=$request->input('email');
+            $user->password=$request->input('password');
+            $user->role=0;
+            $user->save();
+            return 'inserted';
         }
     }
 }

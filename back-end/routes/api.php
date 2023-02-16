@@ -22,3 +22,5 @@ use App\Http\Controllers\Users;
 
 
 Route::post('/user/login', [Users::class, 'login']);
+
+Route::post('/user/signup', [Users::class, 'signup']);
