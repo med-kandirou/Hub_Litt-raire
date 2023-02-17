@@ -20,28 +20,32 @@
                             <th scope="col" class="px-6 py-3">
                                 Date de creation
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                Date de mise a jour
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
-                            </th>
+                        <tr v-for="user in users" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td class="px-6 py-4">
-                                Silver
+                                {{ user.nom }}
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
+                                {{ user.prenom }}
                             </td>
                             <td class="px-6 py-4">
-                                $2999
+                                {{ user.email }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ user.created_at }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ user.updated_at }}
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-        
         </div>
     </div>
 
@@ -55,6 +59,11 @@
     import Sidebar from '@/components/sidebar.vue'
     export default {
     name:'users',
+    data(){
+        return{
+            users:''
+        }
+    },
     components:{
         Sidebar
     },
@@ -65,9 +74,12 @@
                 url: 'http://127.0.0.1:8000/api/admin/getUsers',
                 })
                 .then((res) =>{
-                    console.log(res);
-                })
+                    this.users=res.data;
+                    console.log(res.data);
+            })
         }
+    },mounted(){
+        this.getusers();
     }
     }
 </script>

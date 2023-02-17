@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class admin extends Controller
 {
-    public function getUsers(Request $request)
+    public function getUsers()
     {
-      return 'worked';
+      return User::select('nom','prenom','email', 'created_at','updated_at')->where('role', 0)->get();
     }
 }

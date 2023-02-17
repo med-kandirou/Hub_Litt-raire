@@ -15,7 +15,6 @@ class Users extends Controller
     public function login(Request $request)
     {
         $user = DB::table('Users')->where('email',$request->input('email'))->where('password',$request->input('password'))->first();
-        
         $response=[
             'user'=>$user
         ];
