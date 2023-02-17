@@ -1,14 +1,17 @@
 <template>
 <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
   <div class="container flex flex-wrap items-center justify-between mx-auto">
-  <a href="https://flowbite.com/" class="flex items-center">
-      <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
-      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+  <a href="#" class="flex items-center">
+      <img src="https://thumbs.dreamstime.com/b/ouvert-livre-avec-ic%C3%B4ne-lin%C3%A9aire-mol%C3%A9culaire-vectorielle-%C3%A9ducation-et-litt%C3%A9rature-scientifique-biblioth%C3%A8que-lecture-ligne-161913653.jpg" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
+      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Hub Littéraire</span>
   </a>
   <div class="flex items-center md:order-2">
       <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-        <span class="sr-only">Open user menu</span>
-        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+        <a class="sr-only">Open user menu</a>
+        <div class="relative">
+            <img class="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
+            <span class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+        </div>
       </button>
       <!-- Dropdown menu -->
       <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
