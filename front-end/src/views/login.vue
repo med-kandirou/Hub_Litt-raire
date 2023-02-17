@@ -92,23 +92,29 @@ export default{
                   'Email or mot de passe invalid !',
                   'error'
                 )
-              }else{
-                Cookies.set('id',res.data.user.id);
-                Cookies.set('nom',res.data.user.nom);
-                Cookies.set('prenom',res.data.user.prenom);
-                Cookies.set('email',res.data.user.email);
-                Cookies.set('password',res.data.user.password);
-                this.$swal.fire(
+              }
+              else{
+                  Cookies.set('id',res.data.user.id);
+                  Cookies.set('nom',res.data.user.nom);
+                  Cookies.set('prenom',res.data.user.prenom);
+                  Cookies.set('email',res.data.user.email);
+                  Cookies.set('password',res.data.user.password);
+                  this.$swal.fire(
                     'Succes!',
                     'Connection avec succes',
                     'success'
-                ).then((result) => {
-                if (result.isConfirmed) {
-                  location.href='/user/livres';
-                }})
+                  ).then((result) => {
+                  if (result.isConfirmed) {
+                    if(res.data.user.role==0){
+                      location.href='/user/livres';
+                    }
+                    else{
+                      location.href='/admin/dashboard';
+                    }
+                  }})
               }
             })
-      }
+      },
     }
 }
 

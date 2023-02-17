@@ -11,15 +11,7 @@
     components:{
     },
     data(){
-      return {
-        isUser:''
-      }
-    },
-    
+    }
     }
 </script>
 
-
-<style >
-
-</style>
