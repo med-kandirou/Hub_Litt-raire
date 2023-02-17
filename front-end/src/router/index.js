@@ -7,6 +7,13 @@ import Livres from '../views/user/livres.vue'
 import profile from '../views/user/profile.vue'
 import groupes from '../views/user/groupes.vue'
 import favories from '../views/user/favories.vue'
+
+
+//admin
+import Users from '../views/admin/users.vue'
+import livres_admin from '../views/admin/livres.vue'
+import groupes_Admin from '../views/admin/groupes.vue'
+import categories_admin from '../views/admin/categories.vue'
 const routes = [
   {
     path: '/',
@@ -42,7 +49,27 @@ const routes = [
     path: '/user/favories',
     name: 'favories',
     component: favories
-  }
+  },
+  {
+    path: '/admin/livres',
+    name: 'livres_admin',
+    component: livres_admin
+  },
+  {
+    path: '/admin/groupes',
+    name: 'groupes_Admin',
+    component: groupes_Admin
+  },
+  {
+    path: '/admin/users',
+    name: 'Users',
+    component: Users
+  },
+  {
+    path: '/admin/categories',
+    name: 'categories_admin',
+    component: categories_admin
+  },
 ]
 
 const router = createRouter({

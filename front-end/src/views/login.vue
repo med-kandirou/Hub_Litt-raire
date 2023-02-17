@@ -109,7 +109,7 @@ export default{
                       location.href='/user/livres';
                     }
                     else{
-                      location.href='/admin/dashboard';
+                      location.href='/admin/livres';
                     }
                   }})
               }
