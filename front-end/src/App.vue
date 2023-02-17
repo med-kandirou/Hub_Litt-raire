@@ -10,8 +10,6 @@
     name:'App',
     components:{
     },
-    data(){
-    }
     }
 </script>
 
