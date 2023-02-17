@@ -1,28 +1,25 @@
 
 <template>
-  <Header />
   <RouterView />
-
 </template>
 
 
 <script>
- import Header from './components/header.vue'
+
   export default {
     name:'App',
     components:{
-      Header
     },
     data(){
       return {
-        
+        isUser:''
       }
-    }
+    },
     
-  }
+    }
 </script>
 
 
-<style scoped>
+<style >
 
 </style>

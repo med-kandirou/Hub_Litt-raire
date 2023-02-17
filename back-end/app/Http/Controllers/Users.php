@@ -14,24 +14,12 @@ class Users extends Controller
    
     public function login(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'email' => ['required'],
-        //     'password' => 'required',
-        // ]);
-        // if($validator->fails()){
-        //     $response=[
-        //         'success'=>'fail',
-        //         'message'=>$validator->errors()
-        //     ];
-        //     return $response;
-        // }
-        // else{
-        //     return 'ekt';
-        // }
-
         $user = DB::table('Users')->where('email',$request->input('email'))->where('password',$request->input('password'))->first();
-        return $user;
-
+        
+        $response=[
+            'user'=>$user
+        ];
+        return $response;
     }
 
     public function signup(Request $request)
@@ -61,4 +49,23 @@ class Users extends Controller
             return 'inserted';
         }
     }
+
+    public function supprimerCompte(Request $request)
+    {
+       $user=User::find($request->id);
+       $user->delete();
+       return 'deleted';
+    }
+
+    public function modifierCompte(Request $request,$id)
+    {
+       $user=User::find($id);
+       $user->nom=$request->input('nom');
+       $user->prenom=$request->input('prenom');
+       $user->email=$request->input('email');
+       $user->password=$request->input('password');
+       $user->save();
+       return ['etat'=>'updated'];
+    }
+
 }

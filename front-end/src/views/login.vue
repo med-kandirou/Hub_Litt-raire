@@ -63,6 +63,7 @@
 </template>
 
 <script >
+import Cookies from "vue-cookies";
 import axios from 'axios';
 export default{
     name:'login',
@@ -81,14 +82,30 @@ export default{
         form.append('password',this.password);
         axios({
               method: 'POST',
-              url: 'http://127.0.0.1:8000/api/user/login',
+              url: 'http://127.0.0.1:8000/api/login',
               data:form
             })
             .then((res) =>{
-              if(res.data.success=='fail'){
-                alert('nope');
+              if(res.data.user==null){
+                this.$swal.fire(
+                  'Oops!',
+                  'Email or mot de passe invalid !',
+                  'error'
+                )
               }else{
-                alert('yes');
+                Cookies.set('id',res.data.user.id);
+                Cookies.set('nom',res.data.user.nom);
+                Cookies.set('prenom',res.data.user.prenom);
+                Cookies.set('email',res.data.user.email);
+                Cookies.set('password',res.data.user.password);
+                this.$swal.fire(
+                    'Succes!',
+                    'Connection avec succes',
+                    'success'
+                ).then((result) => {
+                if (result.isConfirmed) {
+                  location.href='/user/livres';
+                }})
               }
             })
       }

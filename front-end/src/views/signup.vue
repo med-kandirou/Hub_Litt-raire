@@ -112,11 +112,19 @@ export default{
         form.append('confirmation',this.confirmation);
         axios({
               method: 'POST',
-              url: 'http://127.0.0.1:8000/api/user/signup',
+              url: 'http://127.0.0.1:8000/api/signup',
               data:form
             })
             .then((res) =>{
-              if(res.data.success=='fail'){
+              if(res.data.success!='fail'){
+                this.$swal.fire(
+                    'Succes!',
+                    'votre compte a été Crée',
+                    'success'
+                ).then((result) => {
+                if (result.isConfirmed) {
+                    this.$router.push('/login');
+                }})
               }else{
                 console.log('ekt');
               }
