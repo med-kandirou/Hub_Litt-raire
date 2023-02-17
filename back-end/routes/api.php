@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
-
+use App\Http\Controllers\admin;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,8 +20,14 @@ use App\Http\Controllers\Users;
 // });
 
 
-
+//user
 Route::post('/login', [Users::class, 'login']);
 Route::post('/signup', [Users::class, 'signup']);
 Route::delete('/user/supprimerCompte', [Users::class, 'supprimerCompte']);
 Route::put('/user/modifierCompte/{id}', [Users::class, 'modifierCompte']);
+
+
+
+//admin
+
+Route::get('/admin/getUsers', [admin::class, 'getUsers']);
