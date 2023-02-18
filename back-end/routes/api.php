@@ -29,5 +29,4 @@ Route::put('/user/modifierCompte/{id}', [Users::class, 'modifierCompte']);
 
 
 //admin
-
 Route::get('/admin/getUsers', [admin::class, 'getUsers']);
