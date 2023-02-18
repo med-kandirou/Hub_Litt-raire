@@ -104,7 +104,14 @@
                 }
                 })
                 .then((res) =>{
-                    console.log(res);
+                    if(res.data="added"){
+                        this.$swal.fire(
+                            'Succes!',
+                            'Catégorie a été bien ajouté',
+                            'success'
+                        )
+                        this.getCats();
+                    }
             })
         }
     },
