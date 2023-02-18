@@ -44,6 +44,7 @@
 
 <script >
 import Cookies from "vue-cookies";
+
 export default {
     name:'sidebar',
     methods :{
