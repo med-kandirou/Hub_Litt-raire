@@ -40,3 +40,4 @@ Route::get('/admin/getCats', [admin::class, 'getCats']);
 //categories
 Route::delete('/categorie/supprimerCat/{id}', [categories::class, 'supprimerCat']);
 Route::post('/categorie/addCat', [categories::class, 'addCat']);
+Route::patch('/categorie/modifierCat/{id}', [categories::class, 'modifierCat']);
