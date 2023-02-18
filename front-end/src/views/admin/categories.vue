@@ -40,6 +40,10 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <Modal />
+                
+
             </div>
         </div>
     </div>
@@ -50,15 +54,17 @@
 <script >
     import axios from 'axios'
     import Sidebar from '@/components/sidebar.vue'
+    import Modal from '@/components/modal.vue'
     export default {
     name:'categories',
     data(){
         return {
-            categories:''
+            categories:'',
         }
     },
     components:{
-        Sidebar
+        Sidebar,
+        Modal
     },
     methods:{
         getCats(){
@@ -77,7 +83,7 @@
                 })
                 .then((res) =>{
                     if(res.data=='deleted'){
-                        console.log(res.data);
+                        this.getCats();
                     }  
             })
         },
