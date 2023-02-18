@@ -21,7 +21,7 @@
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom de categorie</label>
                         <input type="text" v-model="nom" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nom de categorie" required>
                     </div>
-                    <button type="button" @click="$emit('addCat',nom)" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ajouter</button>
+                    <button id="add" type="button" @click="$emit('addCat',nom)" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ajouter</button>
                 </form>
             </div>
     </div>
@@ -46,6 +46,7 @@ export default{
             var modal = document.getElementById("myModal");
             var btn = document.getElementById("myBtn");
             var span = document.getElementsByClassName("close")[0];
+            var add = document.getElementById("add");
             btn.onclick = function() {
                 modal.style.display = "block";
             }
@@ -57,7 +58,10 @@ export default{
                     modal.style.display = "none";
                 }
             }
-        }
+            add.onclick = function() {
+                modal.style.display = "none";
+            }
+        },
     },
     emits: ["addCat"]
 }
