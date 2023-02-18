@@ -41,9 +41,8 @@
                     </tbody>
                 </table>
 
-                <Modal />
+                <Modal @addCat="addCat"/>
                 
-
             </div>
         </div>
     </div>
@@ -95,6 +94,18 @@
             //     .then((res) =>{
             //         this.categories=res.data;
             // })
+        },
+        addCat(nom){
+            axios({
+                method: 'POST',
+                url: 'http://127.0.0.1:8000/api/categorie/addCat',
+                data:{
+                    nom:nom
+                }
+                })
+                .then((res) =>{
+                    console.log(res);
+            })
         }
     },
     mounted(){

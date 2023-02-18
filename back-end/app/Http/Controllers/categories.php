@@ -13,4 +13,13 @@ class categories extends Controller
        $categorie->delete();
        return 'deleted';
     }
+    
+    public function addCat(Request $request)
+    {
+        $categorie=new Categorie();
+        $categorie->nom=$request->input("nom");
+        $categorie->save();
+        return "added";
+    }
+    
 }
