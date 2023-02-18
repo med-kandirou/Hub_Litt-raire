@@ -24,7 +24,8 @@ class categories extends Controller
     public function modifierCat($id,Request $request)
     {
         $categorie=categorie::find($id);
-        $categorie->nom=$request->input('nom');
+        $categorie->nom=$request->input("nom");
+        $categorie->update();
         return 'updated';
     }
     
