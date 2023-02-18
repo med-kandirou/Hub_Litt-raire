@@ -60,6 +60,7 @@ export default{
             }
             add.onclick = function() {
                 modal.style.display = "none";
+                nom='';
             }
         },
     },
