@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\admin;
+use App\Http\Controllers\categories;
+
+// use App\Http\Controllers\;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,3 +34,8 @@ Route::put('/user/modifierCompte/{id}', [Users::class, 'modifierCompte']);
 //admin
 Route::get('/admin/getUsers', [admin::class, 'getUsers']);
 Route::get('/admin/getCats', [admin::class, 'getCats']);
+
+
+
+//categories
+Route::delete('/categorie/supprimerCat/{id}', [categories::class, 'supprimerCat']);

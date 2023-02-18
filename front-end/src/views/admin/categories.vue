@@ -73,10 +73,12 @@
         supprimerCat(id){
             axios({
                 method: 'DELETE',
-                url: 'http://127.0.0.1:8000/api/admin/supprimerCat/'+id+'',
+                url: 'http://127.0.0.1:8000/api/categorie/supprimerCat/'+id+'',
                 })
                 .then((res) =>{
-                    console.log(res.data);
+                    if(res.data=='deleted'){
+                        console.log(res.data);
+                    }  
             })
         },
         modifierCat(id){
