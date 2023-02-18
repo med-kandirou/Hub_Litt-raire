@@ -37,10 +37,10 @@
                                 {{ user.email }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ user.created_at }}
+                                {{ user.created_at.slice(0,10) }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ user.updated_at }}
+                                {{ user.updated_at.slice(0,10) }}
                             </td>
                         </tr>
                     </tbody>

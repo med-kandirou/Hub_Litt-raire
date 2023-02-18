@@ -99,7 +99,8 @@
             })
         },
         addCat(nom){
-            axios({
+            if(nom!=''){
+                axios({
                 method: 'POST',
                 url: 'http://127.0.0.1:8000/api/categorie/addCat',
                 data:{
@@ -115,8 +116,10 @@
                         )
                         this.getCats();
                     }
-            })
-        }
+                    })
+                }
+            }
+            
     },
     mounted(){
         this.getCats();
