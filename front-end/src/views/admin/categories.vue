@@ -102,7 +102,8 @@
             })
         },
         modifierCat(){
-            axios({
+            if(this.nom!=''){
+                axios({
                 method: 'PATCH',
                 url: 'http://127.0.0.1:8000/api/categorie/modifierCat/'+this.idCat+'',
                 data:{
@@ -116,7 +117,8 @@
                         modal.style.display = "none";
                         this.nom='';
                     }
-            })
+                })
+            } 
         },
         addCat(nom){
             if(nom!=''){
