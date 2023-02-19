@@ -77,7 +77,8 @@
                     this.users=res.data;
             })
         }
-    },mounted(){
+    },
+    mounted(){
         this.getusers();
     }
     }
