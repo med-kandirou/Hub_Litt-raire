@@ -40,7 +40,7 @@
                                 {{ group.nom }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ user.created_at.slice(0,10) }}
+                                {{ group.created_at.slice(0,10) }}
                             </td>
                         </tr>
                     </tbody>
@@ -75,7 +75,6 @@
                 url: 'http://127.0.0.1:8000/api/groupe/getGroups',
                 })
                 .then((res) =>{
-                    console.log(res);
                     this.groups=res.data;
             })
         }
