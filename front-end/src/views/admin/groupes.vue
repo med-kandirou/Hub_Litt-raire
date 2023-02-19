@@ -18,6 +18,9 @@
                                 Description
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Créateur
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Date de creation
                             </th>
                         </tr>
@@ -32,6 +35,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ group.description }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ group.nom }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ user.created_at.slice(0,10) }}
