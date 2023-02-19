@@ -41,12 +41,12 @@
                     </tbody>
                 </table>
 
-                <Modal @addCat="addCat"/>
-                
+                <Modal @addCat="addCat"/>                
             </div>
         </div>
     </div>
 
+    
 </template>
 
 
