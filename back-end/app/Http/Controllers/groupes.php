@@ -8,7 +8,7 @@ class groupes extends Controller
 {
     public function getGroups()
     {
-        $groupes = Group::select('groups.id','groups.nom','groups.description','Users.nom')->join('Users', 'Users.id', '=', 'groups.id_user')->get();
+        $groupes = Group::select('groups.id','groups.nom','groups.description','Users.nom AS nom_user')->join('Users', 'Users.id', '=', 'groups.id_user')->get();
         return $groupes;
 
 

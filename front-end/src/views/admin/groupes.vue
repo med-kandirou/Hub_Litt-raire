@@ -37,7 +37,7 @@
                                 {{ group.description }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ group.nom }}
+                                {{ group.nom_user }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ group.created_at.slice(0,10) }}
