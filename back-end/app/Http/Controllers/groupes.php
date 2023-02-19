@@ -10,12 +10,5 @@ class groupes extends Controller
     {
         $groupes = Group::select('groups.id','groups.nom','groups.description','Users.nom AS nom_user')->join('Users', 'Users.id', '=', 'groups.id_user')->get();
         return $groupes;
-
-
-        // $groupes =DB::table('groups')
-        // ->join('users', 'users.id', '=', 'groups.id')
-        // ->select('groups.nom','groups.description','users.nom')
-        // ->get();
-        // return $groupes;
     }
 }
