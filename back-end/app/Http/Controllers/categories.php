@@ -28,5 +28,5 @@ class categories extends Controller
         $categorie->update();
         return 'updated';
     }
-    
+
 }
