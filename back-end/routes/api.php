@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\admin;
 use App\Http\Controllers\categories;
+use App\Http\Controllers\groupes;
 
 // use App\Http\Controllers\;
 /*
@@ -41,3 +42,6 @@ Route::get('/admin/getCats', [admin::class, 'getCats']);
 Route::delete('/categorie/supprimerCat/{id}', [categories::class, 'supprimerCat']);
 Route::post('/categorie/addCat', [categories::class, 'addCat']);
 Route::patch('/categorie/modifierCat/{id}', [categories::class, 'modifierCat']);
+
+//groupes
+Route::get('/groupe/getGroups', [groupes::class, 'getGroups']);
