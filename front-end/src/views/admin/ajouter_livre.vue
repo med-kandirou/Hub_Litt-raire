@@ -48,7 +48,9 @@
             nom:'',
             image:'',
             file:'',
-            selectedCat:''
+            selectedCat:'',
+            UrlImage:'',
+            UrlFile:''
         }
     },
     methods:{
@@ -77,7 +79,7 @@
             formImage.append("folder", "books");
             axios.post("https://api.cloudinary.com/v1_1/dxn7gskyn/auto/upload",formImage)
             .then((res) => {
-                this.image=res.data.url;
+                this.UrlImage=res.data.url;
             })
 
             const signaturePDF = await fetch('http://127.0.0.1:8000/api/livre/getsignature').then((data) => (data.json()));
@@ -89,28 +91,31 @@
             formPdf.append("folder", "books");
             axios.post("https://api.cloudinary.com/v1_1/dxn7gskyn/auto/upload",formPdf)
             .then((res) => {
-                this.file=res.data.url;
+                this.UrlFile=res.data.url;
             })
-            axios({
-                method: 'POST',
-                url: 'http://127.0.0.1:8000/api/livre/addLivre',
-                data:{
-                    nom:this.nom,
-                    image:this.image,
-                    file:this.file,
-                    cat:this.selectedCat
-                }
-                })
-                .then((res) =>{
-                    console.log(res);
-                    // if(res.data="added"){
-                    //     this.$swal.fire(
-                    //         'Succes!',
-                    //         'Livre a été bien ajouté',
-                    //         'success'
-                    //     )
-                    // }
-                })
+
+            //console.log(this.UrlFile);
+            // axios({
+            //     method: 'POST',
+            //     url: 'http://127.0.0.1:8000/api/livre/addLivre',
+            //     data:{
+            //         nom:this.nom,
+            //         image:this.image,
+            //         file:this.file,
+            //         cat:this.selectedCat
+            //     }
+            //     })
+            //     .then((res) =>{
+            //         // if(res.data="added"){
+            //         //     this.$swal.fire(
+            //         //         'Succes!',
+            //         //         'Livre a été bien ajouté',
+            //         //         'success'
+            //         //     )
+            //         // }
+
+            //         console.log(res);
+            //     })
 
             
         }

@@ -34,12 +34,14 @@ class livres extends Controller
 
     public function addLivre(Request $request)
     {
-        $livre =new Livre();
-        $livre->nom=$request->nom;
-        $livre->image=$request->image;
-        $livre->pdf=$request->file;
-        $livre->id_cat=$request->cat;
-        $livre->save();
-        return 'added';
+        // $livre =new Livre();
+        // $livre->nom=$request->nom;
+        // $livre->image=$request->image;
+        // $livre->pdf=$request->file;
+        // $livre->id_cat=$request->cat;
+        // $livre->save();
+        // return 'added';
+
+        return $request;
     }
 }
