@@ -9,7 +9,7 @@ class admin extends Controller
 {
     public function getUsers()
     {
-      return User::select('nom','prenom','email', 'created_at','updated_at')->where('role', 0)->get();
+      return json_encode(User::select('nom','prenom','email', 'created_at','updated_at')->where('role', 0)->get());
     }
     public function getCats()
     {
