@@ -149,7 +149,7 @@
                         this.nom='';
                         this.getCats();
                     }
-                    })
+                })
                 }
             },
             toggle(id,nom){
