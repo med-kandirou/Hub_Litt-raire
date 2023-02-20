@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('livres', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
+            $table->text('image');
             $table->date('date');
             $table->foreignId('id_cat')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
         });
