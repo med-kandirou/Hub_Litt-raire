@@ -6,6 +6,7 @@ use App\Http\Controllers\Users;
 use App\Http\Controllers\admin;
 use App\Http\Controllers\categories;
 use App\Http\Controllers\groupes;
+use App\Http\Controllers\livres;
 
 // use App\Http\Controllers\;
 /*
@@ -45,3 +46,8 @@ Route::patch('/categorie/modifierCat/{id}', [categories::class, 'modifierCat']);
 
 //groupes
 Route::get('/groupe/getGroups', [groupes::class, 'getGroups']);
+
+
+
+//livre
+Route::post('/livre/addLivre', [livres::class, 'addLivre']);
