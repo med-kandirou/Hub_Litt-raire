@@ -14,6 +14,7 @@ import Users from '../views/admin/users.vue'
 import livres_admin from '../views/admin/livres.vue'
 import groupes_Admin from '../views/admin/groupes.vue'
 import categories_admin from '../views/admin/categories.vue'
+import ajouter_livre from '../views/admin/ajouter_livre.vue'
 const routes = [
   {
     path: '/',
@@ -69,6 +70,11 @@ const routes = [
     path: '/admin/categories',
     name: 'categories_admin',
     component: categories_admin
+  },
+  {
+    path: '/admin/ajouter_livre',
+    name: 'ajouter_livre',
+    component: ajouter_livre
   },
 ]
 
