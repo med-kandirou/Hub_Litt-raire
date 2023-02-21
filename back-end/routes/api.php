@@ -36,7 +36,7 @@ Route::put('/user/modifierCompte/{id}', [Users::class, 'modifierCompte']);
 //admin
 Route::get('/admin/getUsers', [admin::class, 'getUsers']);
 Route::get('/admin/getCats', [admin::class, 'getCats']);
-
+Route::get('/admin/getLivres', [admin::class, 'getLivres']);
 
 
 //categories

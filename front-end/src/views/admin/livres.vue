@@ -14,28 +14,27 @@
                                     Nom de livre
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Date de creation
+                                    categorie
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    categorie
+                                    Date de creation
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="livre in livres" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td class="px-6 py-4">
-                                    {{ livre.id }}
+                                    <a :href="livre.pdf"><img :src="livre.image"></a>
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ livre.nom }}
+                                    {{ livre.nom_livre }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ livre.description }}
+                                    {{ livre.nom_cat }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ livre.nom_user }}
+                                    {{ livre.created_at }}
                                 </td>
-                                
                             </tr>
                         </tbody>
                     </table>
@@ -61,7 +60,15 @@
         }
     },
     methods:{
-
+        getLivres(){
+            axios({
+                method: 'GET',
+                url: 'http://127.0.0.1:8000/api/admin/getLivres',
+                })
+                .then((res) =>{
+                    this.livres=res.data;
+            })
+        }
         
     }
     }
