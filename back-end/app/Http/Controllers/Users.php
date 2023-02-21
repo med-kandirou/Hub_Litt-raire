@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Favorie;
+use App\Models\Livre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -87,10 +88,13 @@ class Users extends Controller
         }
     }
 
-    public function getFavories(Request $request)
+    public function getFavories($id)
     {
-        $user = User::find(1);	
-        return $user->favorie;
+        return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
+        ->join('categories', 'livres.id_cat','=','categories.id')
+        ->join('favories', 'favories.id_livre','=','livres.id')
+        ->where('favories.id_user','=',$id)
+        ->get();
     }
 
 

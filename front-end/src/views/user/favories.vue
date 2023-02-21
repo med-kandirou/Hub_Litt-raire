@@ -11,6 +11,7 @@
 
 
 <script >
+import Cookies from 'vue-cookies'
 import Header from '@/components/header_user.vue'
 export default{
     name:'favories_comp',
@@ -26,12 +27,15 @@ export default{
         getLivres(){
             axios({
                 method: 'GET',
-                url: 'http://127.0.0.1:8000/api/user/getFavories',
+                url: 'http://127.0.0.1:8000/api/user/getFavories/'+Cookies.get('id')+'',
                 })
                 .then((res) =>{
                     this.favories=res.data;
             })
         },
+    },
+    mounted(){
+        this.getLivres();
     }
 }
 </script>
