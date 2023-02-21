@@ -31,7 +31,7 @@ Route::post('/signup', [Users::class, 'signup']);
 Route::delete('/user/supprimerCompte', [Users::class, 'supprimerCompte']);
 Route::put('/user/modifierCompte/{id}', [Users::class, 'modifierCompte']);
 Route::post('/user/ajouterFavorie', [Users::class, 'ajouterFavorie']);
-Route::post('/user/getFavories', [Users::class, 'getFavories']);
+Route::get('/user/getFavories', [Users::class, 'getFavories']);
 
 
 

@@ -89,11 +89,8 @@ class Users extends Controller
 
     public function getFavories(Request $request)
     {
-        $count=Favorie::select('id_livre','id_user')
-        ->where('id_livre','=', $request->id_livre)
-        ->where('id_user','=', $request->id_user)
-        ->count();
-        
+        $user = User::find(1);	
+        return $user->favorie;
     }
 
 
