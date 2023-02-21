@@ -48,7 +48,7 @@ export default{
                 }
                 })
                 .then((res) =>{
-                    this.livres=res.data;
+                    console.log(res);
             })
         }
     },

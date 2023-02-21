@@ -22,4 +22,5 @@ class admin extends Controller
       return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
       ->join('categories', 'livres.id_cat','=','categories.id')->get();
     }
+    
 }

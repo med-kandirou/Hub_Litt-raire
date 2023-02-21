@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Favorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -65,6 +66,25 @@ class Users extends Controller
        $user->password=$request->input('password');
        $user->save();
        return ['etat'=>'updated'];
+    }
+
+
+    public function ajouterFavorie(Request $request)
+    {
+        $count=Favorie::select('id_livre','id_user')
+        ->where('id_livre','=', $request->id_livre)
+        ->where('id_user','=', $request->id_user)
+        ->count();
+        if($count==0){
+            $favorie=new Favorie();
+            $favorie->id_livre=$request->input('id_livre');
+            $favorie->id_user=$request->input('id_user');
+            $favorie->save();
+            return "added";
+        }
+        else{
+           return "deja";
+        }
     }
 
 }

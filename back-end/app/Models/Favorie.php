@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favorie extends Model
 {
+    public $timestamps = false;
     use HasFactory;
+
+    
 }
