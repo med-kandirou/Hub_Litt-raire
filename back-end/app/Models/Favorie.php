@@ -10,5 +10,4 @@ class Favorie extends Model
     public $timestamps = false;
     use HasFactory;
 
-    
 }

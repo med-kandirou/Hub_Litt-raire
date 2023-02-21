@@ -11,6 +11,6 @@ class User extends Model
     use HasFactory;
 
     public function favorie(){
-        return $this->hasMany(Favorie::class);
+        return $this->belongsToMany(Livre::class);
     }
 }
