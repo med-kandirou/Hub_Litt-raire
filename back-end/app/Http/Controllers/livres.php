@@ -42,4 +42,10 @@ class livres extends Controller
         $livre->save();
         return 'added';
     }
+
+    function supprimerLivre($id){
+        $livre =Livre::find($id);
+        $livre->delete();
+        return 'deleted';
+    }
 }

@@ -50,8 +50,10 @@ Route::get('/groupe/getGroups', [groupes::class, 'getGroups']);
 
 
 //livre
-Route::post('/livre/addLivre', [livres::class, 'addLivre']);
-
-
-
 Route::get('/livre/getsignature', [livres::class, 'getsignature']);
+Route::post('/livre/addLivre', [livres::class, 'addLivre']);
+Route::delete('/livre/supprimerLivre/{id}', [livres::class, 'supprimerLivre']);
+
+
+
+
