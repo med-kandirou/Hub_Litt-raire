@@ -90,13 +90,20 @@ class Users extends Controller
 
     public function getFavories($id)
     {
-        return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
+        return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat','favories.id as id_favorie')
         ->join('categories', 'livres.id_cat','=','categories.id')
         ->join('favories', 'favories.id_livre','=','livres.id')
         ->where('favories.id_user','=',$id)
         ->get();
     }
 
+    public function supprimerFavorie($id)
+    {
+       $favorie=Favorie::find($id);
+       $favorie->delete();
+       return 'deleted';
+    }
 
 
+    
 }
