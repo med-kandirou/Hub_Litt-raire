@@ -48,7 +48,29 @@ export default{
                 }
                 })
                 .then((res) =>{
-                    console.log(res);
+                    const Toast = this.$swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    if(res.data=='added'){
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Ajouté au favories'
+                        })
+                    }
+                    else{
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Déja ajouté'
+                        })
+                    }
             })
         }
     },
