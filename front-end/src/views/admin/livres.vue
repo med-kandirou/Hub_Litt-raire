@@ -3,12 +3,43 @@
         <Sidebar class="sm:h-screen bg-gray-900 fixed"/>
         <div class="sm:col-start-2 sm:col-span-3 mx-auto">
             <h1 class="mt-10 mb-9 text-center text-4xl font-extrabold tracking-tight leading-none text-gray-900">Les livres</h1>
-            
-            <form @submit.prevent="onSubmit">
-                <input type="file" @change="Upload"><br>
-                <button type="submit" class="bg-slate-500">ajouter</button>
-            </form>
-
+                <div class="">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    image de livre
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nom de livre
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Date de creation
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    categorie
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="livre in livres" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <td class="px-6 py-4">
+                                    {{ livre.id }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ livre.nom }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ livre.description }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ livre.nom_user }}
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
         </div>
     </div>
     
@@ -26,29 +57,12 @@
     },
     data(){
         return {
-            file: null,
+            livres:null
         }
     },
     methods:{
-        Upload(e){
-            this.file = e.target.files[0];
-        },
-        async onSubmit(){
-            const signatureResponse = await fetch('http://127.0.0.1:8000/api/livre/getsignature').then((data) => (data.json()));
-            
-            let form = new FormData();
-            form.append('file', this.file);
-            form.append("api_key", 296547854239657)
-            form.append("signature",signatureResponse.signature)
-            form.append("timestamp",signatureResponse.timestamp)
-            //   optionals Params
-            form.append("folder", "books");
-            axios.post("https://api.cloudinary.com/v1_1/dxn7gskyn/auto/upload",form)
-            .then((res) => {
-                console.log(res)
-            })
-            
-        }
+
+        
     }
     }
 </script>
