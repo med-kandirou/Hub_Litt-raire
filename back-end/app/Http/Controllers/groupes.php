@@ -11,4 +11,15 @@ class groupes extends Controller
         ->join('Users', 'Users.id', '=', 'groups.id_user')->get();
         return $groupes;
     }
+    
+
+    public function creerUngroupe(Request $request)
+    {
+        $groupe = new Group();
+        $groupe->nom=$request->nom;
+        $groupe->description=$request->description;
+        $groupe->id_user=$request->id_user;
+        $groupe->save();
+        return 'added';
+    }
 }

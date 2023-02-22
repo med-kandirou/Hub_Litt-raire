@@ -6,6 +6,7 @@ import signup from '../views/signup.vue'
 import Livres from '../views/user/livres.vue'
 import profile from '../views/user/profile.vue'
 import groupes from '../views/user/groupes.vue'
+import mesGroupes from '../views/user/mesGroupes.vue'
 import favories from '../views/user/favories.vue'
 
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/user/groupes',
     name: 'groupes',
     component: groupes
+  },
+  {
+    path: '/user/mesGroupes',
+    name: 'groupes',
+    component: mesGroupes
   },
   {
     path: '/user/favories',

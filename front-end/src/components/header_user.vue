@@ -27,6 +27,9 @@
             <button @click="supprimerCompte" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Supprimer le compte</button>
           </li>
           <li>
+            <router-link to="/user/mesGroupes"><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Mes groupes</a></router-link> 
+          </li>
+          <li>
             <button @click="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Déconnecter</button>
           </li>
         </ul>
