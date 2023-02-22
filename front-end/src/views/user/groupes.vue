@@ -45,6 +45,7 @@
 
 
 <script >
+    import Cookies from 'vue-cookies'
     import axios from 'axios'
     import Header from '@/components/header_user.vue'
 export default{
@@ -88,7 +89,7 @@ export default{
                             toast.addEventListener('mouseleave', Swal.resumeTimer)
                         }
                         })
-                    if(res.data='added'){
+                    if(res.data=='added'){
                         Toast.fire({
                         icon: 'success',
                         title: 'Ajouté au favories'
@@ -97,7 +98,7 @@ export default{
                     else{
                         Toast.fire({
                         icon: 'error',
-                        title: 'Déja integrer dans le group'
+                        title: 'Déja integrer dans le groupe'
                         })
                     }
                     
