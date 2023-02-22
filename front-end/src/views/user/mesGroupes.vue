@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="group in mesGroups" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <tr v-for="group in groupes" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td class="px-6 py-4">
                         {{ group.nom }}
                     </td>
@@ -40,11 +40,10 @@
     import Cookies from 'vue-cookies'
     import Header from '@/components/header_user.vue'
 export default{
-
     name:'mesGroupes',
     date(){
         return{
-            mesGroups:null
+            groupes:null
         }
     },
     components:{
@@ -58,7 +57,6 @@ export default{
                 })
                 .then((res) =>{
                     console.log(res);
-                    this.Mesgroupes();
                 })
         },
         Mesgroupes(){
@@ -67,11 +65,11 @@ export default{
                 url: 'http://127.0.0.1:8000/api/user/mesGroupes/'+Cookies.get('id')+'',
                 })
                 .then((res) =>{
-                    this.mesGroups=res.data;
+                    this.groupes=res.data;
             })
         }
     },
-    mounted(){
+    created(){
         this.Mesgroupes();
     }
 }
