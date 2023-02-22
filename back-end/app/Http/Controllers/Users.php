@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Favorie;
+use App\Models\Group;
 use App\Models\Livre;
 use App\Models\Membre;
 use Illuminate\Http\Request;
@@ -121,13 +122,23 @@ class Users extends Controller
         else{
            return "deja";
         }
-
-
-
-
-
-
-
-      
     }
+
+
+    public function supprimerMongroup($id)
+    {
+
+        
+    }
+
+    public function mesGroupes($id)
+    {
+        $groupes=Group::select('id','nom','description','created_at')
+        ->where('id_user','=',$id)
+        ->get();
+        return $groupes;
+    }
+    
 }
+
+

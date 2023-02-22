@@ -32,8 +32,9 @@ Route::delete('/user/supprimerCompte', [Users::class, 'supprimerCompte']);
 Route::put('/user/modifierCompte/{id}', [Users::class, 'modifierCompte']);
 Route::post('/user/ajouterFavorie', [Users::class, 'ajouterFavorie']);
 Route::get('/user/getFavories/{id}', [Users::class, 'getFavories']);
-Route::get('/user/mesGroupes', [Users::class, 'mesGroupes']);
+Route::get('/user/mesGroupes/{id}', [Users::class, 'mesGroupes']);
 Route::delete('/user/supprimerFavorie/{id}', [Users::class, 'supprimerFavorie']);
+Route::delete('/user/supprimerMongroup/{id}', [Users::class, 'supprimerMongroup']);
 Route::post('/user/rejoindreGroup', [Users::class, 'rejoindreGroup']);
 
 

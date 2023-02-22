@@ -49,7 +49,7 @@ const routes = [
   },
   {
     path: '/user/mesGroupes',
-    name: 'groupes',
+    name: 'mesGroupes',
     component: mesGroupes
   },
   {
