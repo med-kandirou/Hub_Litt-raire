@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="group in groups" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <tr v-for="group in mesGroups" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td class="px-6 py-4">
                         {{ group.nom }}
                     </td>
@@ -27,7 +27,7 @@
                         {{ group.created_at.slice(0,10) }}
                     </td>
                     <td class="px-6 py-4">
-                        <button @click="deleteMongroup(group.id)" type="button" class="text-white bg-gradient-to-r from-cyan-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Supprimer</button>
+                        <button @click="supprimerMongroup(group.id)" type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Supprimer</button>
                     </td>
                 </tr>
         </tbody>
@@ -43,8 +43,8 @@ export default{
 
     name:'mesGroupes',
     date(){
-        return {
-            groups:''
+        return{
+            mesGroups:null
         }
     },
     components:{
@@ -67,10 +67,12 @@ export default{
                 url: 'http://127.0.0.1:8000/api/user/mesGroupes/'+Cookies.get('id')+'',
                 })
                 .then((res) =>{
-                    console.log(res);
-                })
+                    this.mesGroups=res.data;
+            })
         }
-
+    },
+    mounted(){
+        this.Mesgroupes();
     }
 }
 
