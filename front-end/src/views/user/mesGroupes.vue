@@ -57,8 +57,22 @@ export default{
                 url: 'http://127.0.0.1:8000/api/user/supprimerMongroup/'+id+'',
                 })
                 .then((res) =>{
-                    console.log(res);
-            })
+                    const Toast = this.$swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                        })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'groupe a été supprimé'
+                    })
+                })
         },
         getmesGroupes(){
             axios({
