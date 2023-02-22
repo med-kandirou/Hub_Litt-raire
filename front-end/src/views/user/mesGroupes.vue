@@ -16,18 +16,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="group in groupes" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <tr v-for="g in mesgroupes" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td class="px-6 py-4">
-                        {{ group.nom }}
+                        {{ g.nom }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ group.description }}
+                        {{ g.description }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ group.created_at.slice(0,10) }}
+                        {{ g.created_at.slice(0,10) }} <br>
+
                     </td>
                     <td class="px-6 py-4">
-                        <button @click="supprimerMongroup(group.id)" type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Supprimer</button>
+                        <button @click="supprimerMongroup(g.id)" type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Supprimer</button>
                     </td>
                 </tr>
         </tbody>
@@ -41,9 +42,9 @@
     import Header from '@/components/header_user.vue'
 export default{
     name:'mesGroupes',
-    date(){
+    data(){
         return{
-            groupes:null
+            mesgroupes: '',
         }
     },
     components:{
@@ -57,20 +58,20 @@ export default{
                 })
                 .then((res) =>{
                     console.log(res);
-                })
+            })
         },
-        Mesgroupes(){
+        getmesGroupes(){
             axios({
                 method: 'GET',
                 url: 'http://127.0.0.1:8000/api/user/mesGroupes/'+Cookies.get('id')+'',
                 })
                 .then((res) =>{
-                    this.groupes=res.data;
+                    this.mesgroupes=res.data;
             })
         }
     },
-    created(){
-        this.Mesgroupes();
+    mounted(){
+        this.getmesGroupes();
     }
 }
 

@@ -125,10 +125,10 @@ class Users extends Controller
     }
 
 
-    public function supprimerMongroup($id)
+    public function supprimerMongroup(Group $group)
     {
-
-        
+        $group->delete();
+        return 'deleted';
     }
 
     public function mesGroupes($id)
