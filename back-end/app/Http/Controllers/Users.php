@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Favorie;
 use App\Models\Livre;
+use App\Models\Membre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -103,7 +104,13 @@ class Users extends Controller
        $favorie->delete();
        return 'deleted';
     }
-
-
     
+    public function rejoindreGroup(Request $request)
+    {
+       $membre=new Membre();
+       $membre->id_group=$request->id_group;
+       $membre->id_user=$request->id_user;
+       $membre->save();
+       return 'added';
+    }
 }

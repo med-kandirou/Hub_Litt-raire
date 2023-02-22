@@ -33,6 +33,8 @@ Route::put('/user/modifierCompte/{id}', [Users::class, 'modifierCompte']);
 Route::post('/user/ajouterFavorie', [Users::class, 'ajouterFavorie']);
 Route::get('/user/getFavories/{id}', [Users::class, 'getFavories']);
 Route::delete('/user/supprimerFavorie/{id}', [Users::class, 'supprimerFavorie']);
+Route::post('/user/rejoindreGroup', [Users::class, 'rejoindreGroup']);
+
 
 //admin
 Route::get('/admin/getUsers', [admin::class, 'getUsers']);
