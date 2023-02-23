@@ -46,9 +46,9 @@ class livres extends Controller
         return 'added';
     }
 
-    function supprimerLivre($id){
-        $livre =Livre::find($id);
-        $livre->delete();
+    function supprimerLivre(Livre $livre){
+        $livre->isArchived=1;
+        $livre->update();
         return 'deleted';
     }
 }

@@ -57,12 +57,10 @@ Route::get('/groupe/getGroups', [groupes::class, 'getGroups']);
 Route::post('/groupe/creerUngroupe', [groupes::class, 'creerUngroupe']);
 
 
-
-
 //livre
 Route::get('/livre/getsignature', [livres::class, 'getsignature']);
 Route::post('/livre/addLivre', [livres::class, 'addLivre']);
-Route::delete('/livre/supprimerLivre/{id}', [livres::class, 'supprimerLivre']);
+Route::patch('/livre/supprimerLivre/{livre}', [livres::class, 'supprimerLivre']);
 
 
 
