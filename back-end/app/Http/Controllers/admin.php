@@ -20,7 +20,9 @@ class admin extends Controller
     public function getLivres()
     {
       return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
-      ->join('categories', 'livres.id_cat','=','categories.id')->get();
+      ->join('categories', 'livres.id_cat','=','categories.id')
+      ->where('livres.isArchived','=',0)
+      ->get();
     }
     
 }

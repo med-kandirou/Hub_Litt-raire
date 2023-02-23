@@ -39,6 +39,7 @@ class livres extends Controller
         $livre->nom=$request->nom;
         $livre->image=$request->image;
         $livre->pdf=$request->file;
+        $livre->isArchived=0;
         $livre->id_cat=$request->id_cat;
         $livre->created_at=date("Y-m-d");
         $livre->save();

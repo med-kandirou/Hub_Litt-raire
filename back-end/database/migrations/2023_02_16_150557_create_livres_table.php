@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nom');
             $table->text('image');
             $table->text('pdf');
+            $table->Integer('isArchived');
             $table->foreignId('id_cat')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

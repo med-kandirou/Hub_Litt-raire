@@ -95,6 +95,7 @@ class Users extends Controller
         return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat','favories.id as id_favorie')
         ->join('categories', 'livres.id_cat','=','categories.id')
         ->join('favories', 'favories.id_livre','=','livres.id')
+        ->where('livres.isArchived','=',0)
         ->where('favories.id_user','=',$id)
         ->get();
     }
@@ -143,6 +144,7 @@ class Users extends Controller
     {
         return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
         ->join('categories', 'livres.id_cat','=','categories.id')
+        ->where('livres.isArchived','=',0)
         ->where('livres.created_at','=',$date)
         ->get();
 
@@ -152,6 +154,7 @@ class Users extends Controller
     {
         return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
         ->join('categories', 'livres.id_cat','=','categories.id')
+        ->where('livres.isArchived','=',0)
         ->where('livres.id_cat','=',$cat)
         ->get();
     }
@@ -160,6 +163,7 @@ class Users extends Controller
     {
         return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
         ->join('categories', 'livres.id_cat','=','categories.id')
+        ->where('livres.isArchived','=',0)
         ->where('livres.nom','like',$nom)
         ->get();
     }

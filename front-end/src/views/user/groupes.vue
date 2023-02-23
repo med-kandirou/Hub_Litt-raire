@@ -124,6 +124,7 @@ export default{
                         icon: 'success',
                         title: 'groupe crée'
                         })
+                        this.getGroups();
                     }
                 })
         },
