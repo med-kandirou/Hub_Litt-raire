@@ -4,7 +4,7 @@
     <div class="flex justify-around">
         <div>
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorie :</label>
-            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <select v-model="categorie" @change="getLivrebyCat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>choisir une categorie</option>
                 <option v-for="cat in categories" :value="cat.id">
                     {{cat.nom}}
@@ -18,7 +18,7 @@
         </div>
         <div>
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom :</label>
-            <input type="text" placeholder="nom de livre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <input type="text" v-model="nom" @keyup="getLivrebyNom" placeholder="nom de livre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
 
     </div><br><br>
@@ -43,7 +43,9 @@ export default{
     data(){
         return{
             livres:'',
+            categorie:'',
             categories:'',
+            nom:'',
             date:''
         }
     },
@@ -108,6 +110,24 @@ export default{
             axios({
                 method: 'GET',
                 url: 'http://127.0.0.1:8000/api/user/getLivrebyDate/'+this.date+'',
+                })
+                .then((res) =>{
+                    this.livres=res.data;
+            })
+        },
+        getLivrebyCat(){
+            axios({
+                method: 'GET',
+                url: 'http://127.0.0.1:8000/api/user/getLivrebyCat/'+this.categorie+'',
+                })
+                .then((res) =>{
+                    this.livres=res.data;
+            })
+        },
+        getLivrebyNom(){
+            axios({
+                method: 'GET',
+                url: 'http://127.0.0.1:8000/api/user/getLivrebyNom/'+this.nom+'',
                 })
                 .then((res) =>{
                     this.livres=res.data;

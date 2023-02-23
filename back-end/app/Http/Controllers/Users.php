@@ -141,14 +141,28 @@ class Users extends Controller
 
     public function getLivrebyDate($date)
     {
-        return livre::select('livres.id','livres.nom','image','pdf', 'livres.created_at','categories.nom')
+        return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
         ->join('categories', 'livres.id_cat','=','categories.id')
         ->where('livres.created_at','=',$date)
         ->get();
 
-        // return $date;
+    }
+
+    public function getLivrebyCat($cat)
+    {
+        return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
+        ->join('categories', 'livres.id_cat','=','categories.id')
+        ->where('livres.id_cat','=',$cat)
+        ->get();
+    }
+
+    public function getLivrebyNom($nom)
+    {
+        return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
+        ->join('categories', 'livres.id_cat','=','categories.id')
+        ->where('livres.nom','like',$nom)
+        ->get();
     }
     
 }
-
 
