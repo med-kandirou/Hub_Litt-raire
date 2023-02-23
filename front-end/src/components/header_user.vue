@@ -94,7 +94,7 @@ export default{
             this.$router.push('/login');
         },
         mounted(){
-            this.nom=
+            this.nom=Cookies.get('nom');
             this.prenom=Cookies.get('prenom');
             this.email=Cookies.get('email');
             this.password=Cookies.get('password');
