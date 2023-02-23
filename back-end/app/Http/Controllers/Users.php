@@ -138,6 +138,16 @@ class Users extends Controller
         ->get();
         return $groupes;
     }
+
+    public function getLivrebyDate($date)
+    {
+        return livre::select('livres.id','livres.nom','image','pdf', 'livres.created_at','categories.nom')
+        ->join('categories', 'livres.id_cat','=','categories.id')
+        ->where('livres.created_at','=',$date)
+        ->get();
+
+        // return $date;
+    }
     
 }
 

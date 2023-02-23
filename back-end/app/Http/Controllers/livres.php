@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Cloudinary\Api\ApiUtils;
 use Cloudinary\Configuration\CloudConfig;
 use App\Models\Livre;
+
 // require_once '../../../vendor/autoload.php';
 
 
@@ -39,6 +40,7 @@ class livres extends Controller
         $livre->image=$request->image;
         $livre->pdf=$request->file;
         $livre->id_cat=$request->id_cat;
+        $livre->created_at=date("Y-m-d");
         $livre->save();
         return 'added';
     }

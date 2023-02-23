@@ -36,6 +36,7 @@ Route::get('/user/mesGroupes/{id}', [Users::class, 'mesGroupes']);
 Route::delete('/user/supprimerFavorie/{id}', [Users::class, 'supprimerFavorie']);
 Route::delete('/user/supprimerMongroup/{group}', [Users::class, 'supprimerMongroup']);
 Route::post('/user/rejoindreGroup', [Users::class, 'rejoindreGroup']);
+Route::get('/user/getLivrebyDate/{date}', [Users::class, 'getLivrebyDate']);
 
 
 //admin

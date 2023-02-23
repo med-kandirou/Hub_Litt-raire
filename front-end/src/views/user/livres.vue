@@ -6,13 +6,15 @@
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorie :</label>
             <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>choisir une categorie</option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
+                <option v-for="cat in categories" :value="cat.id">
+                    {{cat.nom}}
+                </option>
+
             </select>
         </div>
         <div>
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date :</label>
-            <input type="date"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <input type="date" v-model="date" @change="getLivrebyDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
         <div>
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom :</label>
@@ -40,7 +42,9 @@ export default{
     name:'livres',
     data(){
         return{
-            livres:''
+            livres:'',
+            categories:'',
+            date:''
         }
     },
     components:{
@@ -90,10 +94,29 @@ export default{
                         })
                     }
             })
-        }
+        },
+        getCats(){
+            axios({
+                method: 'GET',
+                url: 'http://127.0.0.1:8000/api/admin/getCats',
+                })
+                .then((res) =>{
+                    this.categories=res.data;
+            })
+        },
+        getLivrebyDate(){
+            axios({
+                method: 'GET',
+                url: 'http://127.0.0.1:8000/api/user/getLivrebyDate/'+this.date+'',
+                })
+                .then((res) =>{
+                    this.livres=res.data;
+            })
+        },
     },
     mounted(){
         this.getLivres();
+        this.getCats();
     }
     
 
