@@ -24,7 +24,6 @@
 </template>
 
 <script>
-    import Cookies from "vue-cookies";
     import axios from 'axios';
     import Header from '@/components/header_user.vue'
     import { userStore } from '@/stores/userStore'
@@ -73,12 +72,5 @@
                 })
             }
         },
-        // mounted(){
-        //     this.id=Cookies.get('id');
-        //     this.nom=Cookies.get('nom');
-        //     this.prenom=Cookies.get('prenom');
-        //     this.email=Cookies.get('email');
-        //     this.password=Cookies.get('password');
-        // }
     }
 </script>

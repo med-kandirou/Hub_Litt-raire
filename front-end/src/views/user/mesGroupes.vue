@@ -38,7 +38,6 @@
 
 <script >
     import axios from 'axios'
-    import Cookies from 'vue-cookies'
     import Header from '@/components/header_user.vue'
     import { userStore } from '@/stores/userStore'
 export default{

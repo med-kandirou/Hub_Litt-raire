@@ -44,7 +44,7 @@ export default{
         supprimerfavorie(id){
             axios({
                 method: 'DELETE',
-                url: 'http://127.0.0.1:8000/api/user/supprimerFavorie/'+id+'',
+                url: 'http://127.0.0.1:8000/api/user/supprimerFavorie/'+this.user.id+'',
                 })
                 .then((res) =>{
                     this.getLivres();

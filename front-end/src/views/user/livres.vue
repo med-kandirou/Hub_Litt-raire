@@ -34,7 +34,6 @@
 
 
 <script >
-    import Cookies from 'vue-cookies'
     import axios from 'axios'
     import Livre from '@/components/livre.vue'
     import Header from '@/components/header_user.vue'

@@ -90,7 +90,6 @@ export default{
             })
         },
         logout(){
-            
             this.user.$reset();
             this.$router.push('/login');
         },
