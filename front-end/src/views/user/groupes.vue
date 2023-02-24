@@ -75,8 +75,13 @@
     import Cookies from 'vue-cookies'
     import axios from 'axios'
     import Header from '@/components/header_user.vue'
+    import { userStore } from '@/stores/userStore'
 export default{
     name:'favories',
+    setup(){
+      const user = userStore()
+      return { user }
+    },
     data(){
         return {
             groups:'',
@@ -101,7 +106,7 @@ export default{
             var form =new FormData();
             form.append('nom',this.nom);
             form.append('description',this.description);
-            form.append('id_user',Cookies.get('id'));
+            form.append('id_user',this.user.id);
             axios({
                 method: 'POST',
                 url: 'http://127.0.0.1:8000/api/groupe/creerUngroupe',
@@ -134,7 +139,7 @@ export default{
                 url: 'http://127.0.0.1:8000/api/user/rejoindreGroup',
                 data:{
                     id_group:id,
-                    id_user:Cookies.get('id')
+                    id_user:this.user.id
                 }
                 })
                 .then((res) =>{

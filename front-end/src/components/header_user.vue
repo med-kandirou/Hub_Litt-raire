@@ -59,14 +59,18 @@
 
 <script>
 import axios from 'axios';
-import Cookies from "vue-cookies";
+import { userStore } from '@/stores/userStore'
 export default{
     name:'header_user',
+    setup(){
+      const user = userStore()
+      return { user }
+    },
     data(){
       return {
-        nom:Cookies.get('nom'),
-        prenom:Cookies.get('prenom'),
-        email:Cookies.get('email'),
+        nom:this.user.nom,
+        prenom:this.user.prenom,
+        email:this.user.email,
       }
     },
     methods:{
@@ -77,7 +81,7 @@ export default{
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                data: {id:Cookies.get('id')},
+                data: {id:this.user.id},
             })
             .then((res) =>{
               if(res.data=='deleted'){
@@ -86,19 +90,11 @@ export default{
             })
         },
         logout(){
-            Cookies.remove('id');
-            Cookies.remove('nom');
-            Cookies.remove('prenom');
-            Cookies.remove('email');
-            Cookies.remove('password');
+            
+            this.user.$reset();
             this.$router.push('/login');
         },
-        mounted(){
-            this.nom=Cookies.get('nom');
-            this.prenom=Cookies.get('prenom');
-            this.email=Cookies.get('email');
-            this.password=Cookies.get('password');
-        }
+
     }
 }
 </script>

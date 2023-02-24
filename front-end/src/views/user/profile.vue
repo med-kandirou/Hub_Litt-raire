@@ -27,24 +27,30 @@
     import Cookies from "vue-cookies";
     import axios from 'axios';
     import Header from '@/components/header_user.vue'
+    import { userStore } from '@/stores/userStore'
+
     export default {
+        setup(){
+            const user = userStore()
+            return { user }
+        },
         name:'profile',
         components:{
             Header
         },data(){
             return{
-                id:'',
-                nom:'',
-                prenom:'',
-                email:'',
-                password:''
+                id:this.user.id,
+                nom:this.user.nom,
+                prenom:this.user.prenom,
+                email:this.user.email,
+                password:this.user.password
             }
         },
         methods:{
             modifier(){
                 axios({
                 method: 'PUT',
-                url: 'http://127.0.0.1:8000/api/user/modifierCompte/'+Cookies.get('id'),
+                url: 'http://127.0.0.1:8000/api/user/modifierCompte/'+this.user.id,
                 data:{
                     nom:this.nom,
                     prenom:this.prenom,
@@ -54,10 +60,10 @@
                 })
                 .then((res) =>{
                     if(res.data.etat='updated'){
-                        Cookies.set('nom',this.nom);
-                        Cookies.set('prenom',this.prenom);
-                        Cookies.set('email',this.email);
-                        Cookies.set('password',this.password);
+                        this.user.nom=this.nom;
+                        this.user.prenom=this.prenom;
+                        this.user.email=this.email;
+                        this.user.password=this.password;
                         this.$swal.fire(
                             'Succes!',
                             'votre compte est modifié ',
@@ -67,12 +73,12 @@
                 })
             }
         },
-        mounted(){
-            this.id=Cookies.get('id');
-            this.nom=Cookies.get('nom');
-            this.prenom=Cookies.get('prenom');
-            this.email=Cookies.get('email');
-            this.password=Cookies.get('password');
-        }
+        // mounted(){
+        //     this.id=Cookies.get('id');
+        //     this.nom=Cookies.get('nom');
+        //     this.prenom=Cookies.get('prenom');
+        //     this.email=Cookies.get('email');
+        //     this.password=Cookies.get('password');
+        // }
     }
 </script>

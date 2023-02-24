@@ -40,8 +40,13 @@
     import axios from 'axios'
     import Cookies from 'vue-cookies'
     import Header from '@/components/header_user.vue'
+    import { userStore } from '@/stores/userStore'
 export default{
     name:'mesGroupes',
+    setup(){
+      const user = userStore()
+      return { user }
+    },
     data(){
         return{
             mesgroupes: '',
@@ -78,7 +83,7 @@ export default{
         getmesGroupes(){
             axios({
                 method: 'GET',
-                url: 'http://127.0.0.1:8000/api/user/mesGroupes/'+Cookies.get('id')+'',
+                url: 'http://127.0.0.1:8000/api/user/mesGroupes/'+this.user.id+'',
                 })
                 .then((res) =>{
                     this.mesgroupes=res.data;

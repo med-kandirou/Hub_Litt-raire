@@ -15,8 +15,13 @@
     import Cookies from 'vue-cookies'
     import Header from '@/components/header_user.vue'
     import Livre from '@/components/livre.vue'
+    import { userStore } from '@/stores/userStore'
 export default{
     name:'favories_comp',
+    setup(){
+      const user = userStore()
+      return { user }
+    },
     data(){
         return {
             favories:''
@@ -30,7 +35,7 @@ export default{
         getLivres(){
             axios({
                 method: 'GET',
-                url: 'http://127.0.0.1:8000/api/user/getFavories/'+Cookies.get('id')+'',
+                url: 'http://127.0.0.1:8000/api/user/getFavories/'+this.user.id+'',
                 })
                 .then((res) =>{
                     this.favories=res.data;
@@ -42,7 +47,6 @@ export default{
                 url: 'http://127.0.0.1:8000/api/user/supprimerFavorie/'+id+'',
                 })
                 .then((res) =>{
-                    console.log(res);
                     this.getLivres();
                 })
         }

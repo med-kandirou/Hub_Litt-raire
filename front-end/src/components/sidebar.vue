@@ -48,19 +48,19 @@
 
 <script >
 import Cookies from "vue-cookies";
-
+import { userStore } from '@/stores/userStore'
 export default {
     name:'sidebar',
+    setup(){
+      const user = userStore()
+      return { user }
+    },
     methods :{
         openSidebar() {
             document.querySelector(".sidebar").classList.toggle("hidden");
         },
         logout(){
-            Cookies.remove('id');
-            Cookies.remove('nom');
-            Cookies.remove('prenom');
-            Cookies.remove('email');
-            Cookies.remove('password');
+            this.user.$reset();
             this.$router.push('/login');
         }
     }

@@ -19,7 +19,7 @@
           <div
             class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"
           >
-            <p class="text-center font-semibold mx-4 mb-0">Se connecter</p>
+            <p class="text-center font-semibold mx-4 mb-0">Se connecter {{ user.name }}</p>
           </div>
 
           <!-- Email input -->
@@ -63,10 +63,16 @@
 </template>
 
 <script >
-import Cookies from "vue-cookies";
+
 import axios from 'axios';
+import { userStore } from '@/stores/userStore'
+
 export default{
     name:'login',
+    setup(){
+      const user = userStore()
+      return { user }
+    },
     data(){
       return {
         email:'',
@@ -94,11 +100,16 @@ export default{
                 )
               }
               else{
-                  Cookies.set('id',res.data.user.id);
-                  Cookies.set('nom',res.data.user.nom);
-                  Cookies.set('prenom',res.data.user.prenom);
-                  Cookies.set('email',res.data.user.email);
-                  Cookies.set('password',res.data.user.password);
+                  // Cookies.set('id',res.data.user.id);
+                  // Cookies.set('nom',res.data.user.nom);
+                  // Cookies.set('prenom',res.data.user.prenom);
+                  // Cookies.set('email',res.data.user.email);
+                  // Cookies.set('password',res.data.user.password);
+                  this.user.id=res.data.user.id;
+                  this.user.nom=res.data.user.nom;
+                  this.user.prenom=res.data.user.prenom;
+                  this.user.email=res.data.user.email;
+                  this.user.password=res.data.user.password;
                   this.$swal.fire(
                     'Succes!',
                     'Connection avec succes',
@@ -115,7 +126,11 @@ export default{
               }
             })
       },
-    }
+
+      test(){
+        this.user.changevalue();
+      }
+    },
 }
 
 

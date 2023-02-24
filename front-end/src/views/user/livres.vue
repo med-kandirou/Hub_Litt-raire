@@ -1,5 +1,6 @@
 <template>
     <Header />
+
     <h1 class="mt-10 mb-9 text-center text-4xl font-extrabold tracking-tight leading-none text-gray-900">Les livres</h1>
     <div class="flex justify-around">
         <div>
@@ -37,9 +38,13 @@
     import axios from 'axios'
     import Livre from '@/components/livre.vue'
     import Header from '@/components/header_user.vue'
-
+    import { userStore } from '@/stores/userStore'
 export default{
     name:'livres',
+    setup(){
+      const user = userStore()
+      return { user }
+    },
     data(){
         return{
             livres:'',
@@ -68,7 +73,7 @@ export default{
                 url: 'http://127.0.0.1:8000/api/user/ajouterFavorie',
                 data:{
                     id_livre:id,
-                    id_user:Cookies.get('id')
+                    id_user:this.user.id
                 }
                 })
                 .then((res) =>{
