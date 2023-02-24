@@ -12,7 +12,6 @@
 
 <script >
     import axios from 'axios'
-    import Cookies from 'vue-cookies'
     import Header from '@/components/header_user.vue'
     import Livre from '@/components/livre.vue'
     import { userStore } from '@/stores/userStore'
@@ -44,7 +43,7 @@ export default{
         supprimerfavorie(id){
             axios({
                 method: 'DELETE',
-                url: 'http://127.0.0.1:8000/api/user/supprimerFavorie/'+this.user.id+'',
+                url: 'http://127.0.0.1:8000/api/user/supprimerFavorie/'+id+'',
                 })
                 .then((res) =>{
                     this.getLivres();
