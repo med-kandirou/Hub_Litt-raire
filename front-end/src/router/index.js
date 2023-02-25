@@ -16,6 +16,8 @@ import livres_admin from '../views/admin/livres.vue'
 import groupes_Admin from '../views/admin/groupes.vue'
 import categories_admin from '../views/admin/categories.vue'
 import ajouter_livre from '../views/admin/ajouter_livre.vue'
+
+import notfound from '../components/notfound.vue'
 const routes = [
   {
     path: '/',
@@ -81,6 +83,11 @@ const routes = [
     path: '/admin/ajouter_livre',
     name: 'ajouter_livre',
     component: ajouter_livre
+  },
+  {
+    path: '/:pathMatch(.*)',
+    name: 'notfound',
+    component: notfound
   },
 ]
 
