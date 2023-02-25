@@ -58,8 +58,14 @@
 <script >
     import axios from 'axios'
     import Sidebar from '@/components/sidebar.vue'
+    import { userStore } from '@/stores/userStore'
     export default {
     name:'groupes',
+    
+    setup(){
+        const user = userStore()
+        return { user }
+        },
     data(){
         return{
             groups:''
@@ -80,6 +86,7 @@
         }
     },
     mounted(){
+        this.user.checkifAdmin();
         this.getGroups();
     }
     }

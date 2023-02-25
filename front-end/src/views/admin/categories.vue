@@ -78,8 +78,13 @@
 <script >
     import axios from 'axios'
     import Sidebar from '@/components/sidebar.vue'
+    import { userStore } from '@/stores/userStore'
     export default {
     name:'categories',
+    setup(){
+      const user = userStore()
+      return { user }
+    },
     data(){
         return {
             categories:'',
@@ -169,6 +174,7 @@
         },
     },
     mounted(){
+        this.user.checkifAdmin();
         this.getCats();
     }
     }

@@ -57,8 +57,14 @@
 
     import axios from 'axios';
     import Sidebar from '@/components/sidebar.vue'
+    import { userStore } from '@/stores/userStore'
     export default {
     name:'users',
+    setup(){
+        const user = userStore()
+        return { user }
+    },
+
     data(){
         return{
             users:''
@@ -79,6 +85,7 @@
         }
     },
     mounted(){
+        this.user.checkifAdmin();
         this.getusers();
     }
     }

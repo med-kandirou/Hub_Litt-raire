@@ -36,8 +36,13 @@
 <script >
     import axios from 'axios'
     import Sidebar from '@/components/sidebar.vue'
+    import { userStore } from '@/stores/userStore'
     export default {
     name:'ajouter_livre',
+    setup(){
+      const user = userStore()
+      return { user }
+    },
     components:{
         Sidebar
     },
@@ -113,6 +118,7 @@
     
     },
     mounted(){
+        this.user.checkifAdmin();
         this.getCats();
     }
     
