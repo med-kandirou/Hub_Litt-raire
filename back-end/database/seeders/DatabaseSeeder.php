@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\categorie;
+use App\Models\Livre;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,9 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
         User::factory()->count(10)->create();
         categorie::factory()->count(5)->create();
-
+        Livre::factory()->count(6)->create();
     }
 }
