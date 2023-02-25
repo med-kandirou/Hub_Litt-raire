@@ -37,52 +37,52 @@ const routes = [
   {
     path: '/user/livres',
     name: 'Livres',
-    component: Livres
+    component: Livres,
   },
   {
     path: '/user/profile',
     name: 'profile',
-    component: profile
+    component: profile,
   },
   {
     path: '/user/groupes',
     name: 'groupes',
-    component: groupes
+    component: groupes,
   },
   {
     path: '/user/mesGroupes',
     name: 'mesGroupes',
-    component: mesGroupes
+    component: mesGroupes,
   },
   {
     path: '/user/favories',
     name: 'favories',
-    component: favories
+    component: favories,
   },
   {
     path: '/admin/livres',
     name: 'livres_admin',
-    component: livres_admin
+    component: livres_admin,
   },
   {
     path: '/admin/groupes',
     name: 'groupes_Admin',
-    component: groupes_Admin
+    component: groupes_Admin,
   },
   {
     path: '/admin/users',
     name: 'Users',
-    component: Users
+    component: Users,
   },
   {
     path: '/admin/categories',
     name: 'categories_admin',
-    component: categories_admin
+    component: categories_admin,
   },
   {
     path: '/admin/ajouter_livre',
     name: 'ajouter_livre',
-    component: ajouter_livre
+    component: ajouter_livre,
   },
   {
     path: '/:pathMatch(.*)',

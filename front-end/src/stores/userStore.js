@@ -7,6 +7,7 @@ export const userStore = defineStore('userStore', {
         prenom:'',
         email:'',
         password:'',
+        role:'',
     }),
     getters: {
       

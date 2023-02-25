@@ -106,6 +106,7 @@ export default{
                   this.user.prenom=res.data.user.prenom;
                   this.user.email=res.data.user.email;
                   this.user.password=res.data.user.password;
+                  this.user.role=res.data.user.role;
                   this.$swal.fire(
                     'Succes!',
                     'Connection avec succes',
