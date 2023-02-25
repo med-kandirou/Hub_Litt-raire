@@ -72,5 +72,8 @@
                 })
             }
         },
+        mounted(){
+            this.user.checkifuser();
+        }
     }
 </script>

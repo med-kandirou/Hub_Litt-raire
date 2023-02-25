@@ -90,6 +90,7 @@ export default{
         }
     },
     mounted(){
+        this.user.checkifuser();
         this.getmesGroupes();
     }
 }

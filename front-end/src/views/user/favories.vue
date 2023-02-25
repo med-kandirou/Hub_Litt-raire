@@ -51,6 +51,7 @@ export default{
         }
     },
     mounted(){
+        this.user.checkifuser();
         this.getLivres();
     }
 }
