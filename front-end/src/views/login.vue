@@ -99,12 +99,8 @@ export default{
                   'error'
                 )
               }
-              else{
-                  // Cookies.set('id',res.data.user.id);
-                  // Cookies.set('nom',res.data.user.nom);
-                  // Cookies.set('prenom',res.data.user.prenom);
-                  // Cookies.set('email',res.data.user.email);
-                  // Cookies.set('password',res.data.user.password);
+              else
+              {
                   this.user.id=res.data.user.id;
                   this.user.nom=res.data.user.nom;
                   this.user.prenom=res.data.user.prenom;
