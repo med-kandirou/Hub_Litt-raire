@@ -9,12 +9,13 @@ use App\Models\categorie;
  */
 class CategorieFactory extends Factory
 {
+    protected $model = categorie::class;
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-    protected $model = categorie::class;
+    
     public function definition(): array
     {
         return [
