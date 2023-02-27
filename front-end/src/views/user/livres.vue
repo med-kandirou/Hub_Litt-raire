@@ -47,7 +47,7 @@ export default{
     data(){
         return{
             livres:'',
-            mesReactions:'',
+            mesReactions:[],
             categorie:'',
             categories:'',
             nom:'',
@@ -75,14 +75,15 @@ export default{
                 })
                 .then((res) =>{
                     this.mesReactions=res.data;
+                    console.log(this.mesReactions)
             })
         },
-        checkReact(){
-        //    for(let i=0;i<this.mesReactions.length;i++){
-        //         console.log(i);
-        //    }
-            console.log(this.mesReactions)
-        },
+        // checkReact(){
+        // //    for(let i=0;i<this.mesReactions.length;i++){
+        // //         console.log(i);
+        // //    }
+        //     console.log(this.mesReactions)
+        // },
         ajouterFavorie(id){
             axios({
                 method: 'POST',
@@ -158,7 +159,7 @@ export default{
     mounted(){
         this.user.checkifuser();
         this.getMesReaction();
-        this.checkReact();
+        // this.checkReact();
         this.getLivres();
         this.getCats();
     },
