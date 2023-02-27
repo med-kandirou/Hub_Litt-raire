@@ -15,8 +15,11 @@
                     <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </button>
                 <div class="flex justify-around mt-4">
-                    <button><img height="40" width="40" src="../../public/like.svg" alt="like"></button>
-                    <button><img height="40" width="40" src="../../public/dislike.svg" alt="disike"></button>
+                    <div v-if="re">
+
+                    </div>
+                    <button><Like /></button>
+                    <button><Dislike /></button>
                 </div>
             </div>
             <div v-else>
@@ -30,6 +33,8 @@
 </template>
 
 <script >
+import Like from '../components/like.vue'
+import Dislike from '../components/dislike.vue'
 
     export default{
         name:'livre_comp',
@@ -43,5 +48,9 @@
             id_favorie:Number,
             page:String
         },
+        components:{
+            Like,
+            Dislike
+        }
     }
 </script>
