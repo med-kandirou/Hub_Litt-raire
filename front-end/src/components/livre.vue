@@ -16,7 +16,7 @@
                 </button>
                 <div class="flex justify-around mt-4">
                     <button><img height="40" width="40" src="../../public/like.svg" alt="like"></button>
-                    <button><img height="40" width="40" src="../../public/like.svg" alt="disike"></button>
+                    <button><img height="40" width="40" src="../../public/dislike.svg" alt="disike"></button>
                 </div>
             </div>
             <div v-else>
