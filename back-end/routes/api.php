@@ -40,6 +40,8 @@ Route::get('/user/getLivrebyDate/{date}', [Users::class, 'getLivrebyDate']);
 Route::get('/user/getLivrebyCat/{cat}', [Users::class, 'getLivrebyCat']);
 Route::get('/user/getLivrebyNom/{nom}', [Users::class, 'getLivrebyNom']);
 
+Route::get('/user/getMesReaction/{id}', [Users::class, 'getMesReaction']);
+
 
 //admin
 Route::get('/admin/getUsers', [admin::class, 'getUsers']);

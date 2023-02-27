@@ -7,6 +7,7 @@ use App\Models\Favorie;
 use App\Models\Group;
 use App\Models\Livre;
 use App\Models\Membre;
+use App\Models\Reaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -165,6 +166,12 @@ class Users extends Controller
         ->join('categories', 'livres.id_cat','=','categories.id')
         ->where('livres.isArchived','=',0)
         ->where('livres.nom','like',$nom)
+        ->get();
+    }
+
+    public function getMesReaction($id){
+        return Reaction::select('id','id_livre','reaction', 'note')
+        ->where('id_user','=',$id)
         ->get();
     }
     

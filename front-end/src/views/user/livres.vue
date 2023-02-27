@@ -47,6 +47,7 @@ export default{
     data(){
         return{
             livres:'',
+            mesReactions:'',
             categorie:'',
             categories:'',
             nom:'',
@@ -64,6 +65,16 @@ export default{
                 })
                 .then((res) =>{
                     this.livres=res.data;
+            })
+        },
+        getMesReaction(){
+            axios({
+                method: 'GET',
+                url: 'http://127.0.0.1:8000/api/user/getMesReaction/'+this.user.id+'',
+                })
+                .then((res) =>{
+                    this.mesReactions=res.data;
+                    console.log(res.data);
             })
         },
         ajouterFavorie(id){
@@ -140,6 +151,7 @@ export default{
     },
     mounted(){
         this.user.checkifuser();
+        this.getMesReaction();
         this.getLivres();
         this.getCats();
     }
