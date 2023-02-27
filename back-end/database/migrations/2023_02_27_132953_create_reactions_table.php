@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('reactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('id_livre')->references('id')->on('livres')->onDelete('cascade')->onUpdate('cascade');
+            $table->Integer('rection');
+            $table->Integer('note');
             $table->timestamps();
         });
     }
