@@ -25,7 +25,7 @@
     </div><br><br>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <div v-for="livre in livres">
-            <Livre page="livre" @ajouterFavorie="ajouterFavorie" :id_livre="livre.id" :image="livre.image" :nom="livre.nom_livre" :file="livre.pdf" :cat="livre.nom_cat" :date="livre.created_at"  />
+            <Livre page="livre" reaction="0" @ajouterFavorie="ajouterFavorie" :id_livre="livre.id" :image="livre.image" :nom="livre.nom_livre" :file="livre.pdf" :cat="livre.nom_cat" :date="livre.created_at"  />
         </div>      
     </div>
 
