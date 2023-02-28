@@ -178,7 +178,6 @@ class Users extends Controller
         })
         ->select('livres.id as idlivre', 'reactions.*')
         ->get();
-    
     }
     
 }
