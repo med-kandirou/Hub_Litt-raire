@@ -19,13 +19,13 @@
                         <button><Like color="#FF0000"/></button>
                     </div>
                     <div v-else>
-                        <button><Like color="#000000"/></button>
+                        <button @click="this.$emit('like',id_livre)"><Like color="#000000"/></button>
                     </div>
                     <div v-if="reaction==-1">
                         <button><Dislike color="#FF0000"/></button>
                     </div>
                     <div v-else>
-                        <button><Dislike color="#000000"/></button>
+                        <button @click="this.$emit('dislike',id_livre)"><Dislike color="#000000"/></button>
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@
     </div><br><br>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <div v-for="livre in livres">
-            <Livre page="livre" :reaction="livre.reaction"  @ajouterFavorie="ajouterFavorie" :id_livre="livre.idlivre" :image="livre.image" :nom="livre.nom_livre" :file="livre.pdf" :cat="livre.nom_cat" :date="livre.created_at"  />
+            <Livre page="livre" :reaction="livre.reaction" @dislike="dislike" @like="like" @ajouterFavorie="ajouterFavorie" :id_livre="livre.idlivre" :image="livre.image" :nom="livre.nom_livre" :file="livre.pdf" :cat="livre.nom_cat" :date="livre.created_at"  />
         </div>      
     </div>
 
@@ -66,6 +66,12 @@ export default{
                 .then((res) =>{
                     this.livres=res.data;
             })
+        },
+        like(id){
+            console.log("like",id)
+        },
+        dislike(id){
+            console.log("dislike",id)
         },
         ajouterFavorie(id){
             axios({
