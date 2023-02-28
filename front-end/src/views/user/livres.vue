@@ -67,7 +67,6 @@ export default{
                     this.livres=res.data;
             })
         },
-        
         getMesReaction(){
             axios({
                 method: 'GET',
@@ -75,15 +74,15 @@ export default{
                 })
                 .then((res) =>{
                     this.mesReactions=res.data;
-                    console.log(this.mesReactions)
+                    this.checkReact();
             })
         },
-        // checkReact(){
-        // //    for(let i=0;i<this.mesReactions.length;i++){
-        // //         console.log(i);
-        // //    }
-        //     console.log(this.mesReactions)
-        // },
+        checkReact(){
+        //    for(let i=0;i<this.mesReactions.length;i++){
+        //     console.log(this.mesReactions[i][1]);
+        //     }
+        console.log(this.mesReactions);
+        },
         ajouterFavorie(id){
             axios({
                 method: 'POST',
@@ -163,12 +162,6 @@ export default{
         this.getLivres();
         this.getCats();
     },
-    created(){
-       
-    }
-    
-
-
 }
 </script>
 

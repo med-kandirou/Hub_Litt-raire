@@ -169,11 +169,9 @@ class Users extends Controller
         ->get();
     }
 
-    public function getMesReaction($id){
-        return Reaction::select('id','id_livre','reaction', 'note')
-        ->where('id_user','=',$id)
-        ->get();
-    }
+   public function getLivres(){
+    
+   }
     
 }
 
