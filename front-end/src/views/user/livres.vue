@@ -68,10 +68,30 @@ export default{
             })
         },
         like(id){
-            console.log("like",id)
+            axios({
+                method: 'PATCH',
+                url: 'http://127.0.0.1:8000/api/user/like',
+                data:{
+                    id_livre:id,
+                    id_user:this.user.id,
+                }
+                })
+                .then((res) =>{
+                    this.livres=res.data;
+            })
         },
         dislike(id){
-            console.log("dislike",id)
+            axios({
+                method: 'PATCH',
+                url: 'http://127.0.0.1:8000/api/user/dislike',
+                data:{
+                    id_livre:id,
+                    id_user:this.user.id,
+                }
+                })
+                .then((res) =>{
+                    this.livres=res.data;
+            })
         },
         ajouterFavorie(id){
             axios({
