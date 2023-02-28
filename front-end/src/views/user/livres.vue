@@ -77,7 +77,7 @@ export default{
                 }
                 })
                 .then((res) =>{
-                    this.livres=res.data;
+                    console.log(res);
             })
         },
         dislike(id){
@@ -90,7 +90,7 @@ export default{
                 }
                 })
                 .then((res) =>{
-                    this.livres=res.data;
+                    console.log(res);
             })
         },
         ajouterFavorie(id){

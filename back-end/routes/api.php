@@ -41,7 +41,8 @@ Route::get('/user/getLivrebyCat/{cat}', [Users::class, 'getLivrebyCat']);
 Route::get('/user/getLivrebyNom/{nom}', [Users::class, 'getLivrebyNom']);
 Route::get('/user/getLivres/{id}', [Users::class, 'getLivres']);
 
-
+Route::patch('/user/like', [Users::class, 'like']);
+Route::patch('/user/dislike', [Users::class, 'dislike']);
 //admin
 Route::get('/admin/getUsers', [admin::class, 'getUsers']);
 Route::get('/admin/getCats', [admin::class, 'getCats']);

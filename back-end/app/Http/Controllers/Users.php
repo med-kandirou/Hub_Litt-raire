@@ -180,6 +180,32 @@ class Users extends Controller
         ->join('categories','livres.id_cat','=','categories.id')
         ->get();
     }
+
+    public function like(Request $request){
+        $reaction=Reaction::
+        where('id_livre','=',$request->id_livre)
+        ->where('id_user','=',$request->id_user)
+        ->get();
+        if(count($reaction)==0){
+            $reaction=new Reaction();
+            $reaction->id_user=$request->id_user;
+            $reaction->id_livre=$request->id_livre;
+            $reaction->reaction=1;
+            $reaction->note=0;
+        }
+        else{
+            $reaction->reaction=1;
+        }
+    }
+    public function dislike(Request $request){
+        // return Reaction::select('')
+        // ->where('id_livre','=',$request->id_livre)
+        // ->where('id_user','=',$request->id_user)
+        // ->get();
+
+        return $request;
+
+    }
     
 }
 
