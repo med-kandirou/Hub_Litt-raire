@@ -77,7 +77,7 @@ export default{
                 }
                 })
                 .then((res) =>{
-                    console.log(res);
+                    this.getLivres();
             })
         },
         dislike(id){
