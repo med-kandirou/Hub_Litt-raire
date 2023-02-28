@@ -25,7 +25,7 @@
     </div><br><br>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <div v-for="livre in livres">
-            <Livre page="livre"  @ajouterFavorie="ajouterFavorie" :id_livre="livre.id" :image="livre.image" :nom="livre.nom_livre" :file="livre.pdf" :cat="livre.nom_cat" :date="livre.created_at"  />
+            <Livre page="livre" :reaction="livre.reaction"  @ajouterFavorie="ajouterFavorie" :id_livre="livre.idlivre" :image="livre.image" :nom="livre.nom_livre" :file="livre.pdf" :cat="livre.nom_cat" :date="livre.created_at"  />
         </div>      
     </div>
 
@@ -61,27 +61,11 @@ export default{
         getLivres(){
             axios({
                 method: 'GET',
-                url: 'http://127.0.0.1:8000/api/admin/getLivres',
+                url: 'http://127.0.0.1:8000/api/user/getLivres/'+this.user.id+'',
                 })
                 .then((res) =>{
                     this.livres=res.data;
             })
-        },
-        getMesReaction(){
-            axios({
-                method: 'GET',
-                url: 'http://127.0.0.1:8000/api/user/getMesReaction/'+this.user.id+'',
-                })
-                .then((res) =>{
-                    this.mesReactions=res.data;
-                    this.checkReact();
-            })
-        },
-        checkReact(){
-        //    for(let i=0;i<this.mesReactions.length;i++){
-        //     console.log(this.mesReactions[i][1]);
-        //     }
-        console.log(this.mesReactions);
         },
         ajouterFavorie(id){
             axios({
@@ -157,8 +141,6 @@ export default{
     },
     mounted(){
         this.user.checkifuser();
-        this.getMesReaction();
-        // this.checkReact();
         this.getLivres();
         this.getCats();
     },

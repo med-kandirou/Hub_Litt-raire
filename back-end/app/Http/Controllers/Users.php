@@ -176,7 +176,8 @@ class Users extends Controller
             $join->on('livres.id', '=', 'reactions.id_livre')
                 ->where('reactions.id_user', '=', $id);
         })
-        ->select('livres.id as idlivre', 'reactions.*')
+        ->select('livres.id as idlivre','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat', 'reactions.*')
+        ->join('categories','livres.id_cat','=','categories.id')
         ->get();
     }
     
