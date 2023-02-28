@@ -169,9 +169,14 @@ class Users extends Controller
         ->get();
     }
 
-   public function getLivres(){
-    
-   }
+    public function getLivres($id)
+    {
+      return livre::select('livres.id','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat')
+      ->join('categories', 'livres.id_cat','=','categories.id')
+      ->leftJoin('reactions', 'reactions.id_livre','=','livres.id')
+      ->where('reactions.id_user','=',$id)
+      ->get();
+    }
     
 }
 

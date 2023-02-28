@@ -39,7 +39,6 @@ Route::post('/user/rejoindreGroup', [Users::class, 'rejoindreGroup']);
 Route::get('/user/getLivrebyDate/{date}', [Users::class, 'getLivrebyDate']);
 Route::get('/user/getLivrebyCat/{cat}', [Users::class, 'getLivrebyCat']);
 Route::get('/user/getLivrebyNom/{nom}', [Users::class, 'getLivrebyNom']);
-
 Route::get('/user/getLivres/{id}', [Users::class, 'getLivres']);
 
 
