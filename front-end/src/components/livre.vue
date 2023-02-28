@@ -16,7 +16,7 @@
                 </button>
                 <div class="flex justify-around mt-4">
                     <div v-if="reaction==1">
-                        <button><Like color="#FF0000"/></button>
+                        <button><Like color="#32CD32"/></button>
                     </div>
                     <div v-else>
                         <button @click="this.$emit('like',id_livre)"><Like color="#000000"/></button>

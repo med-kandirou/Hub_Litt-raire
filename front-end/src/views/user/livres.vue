@@ -91,6 +91,7 @@ export default{
                 })
                 .then((res) =>{
                     console.log(res);
+                    this.getLivres();
             })
         },
         ajouterFavorie(id){
