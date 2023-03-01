@@ -178,6 +178,7 @@ class Users extends Controller
         })
         ->select('livres.id as idlivre','livres.nom AS nom_livre','livres.image','livres.pdf', 'livres.created_at','categories.nom AS nom_cat', 'reactions.*')
         ->join('categories','livres.id_cat','=','categories.id')
+        ->orderBy('livres.id', 'asc')
         ->get();
     }
 
@@ -195,8 +196,6 @@ class Users extends Controller
             $reaction->save();
         }
         else{
-            // $reaction->reaction=1;
-            // $reaction->update();
             Reaction::where('id_livre','=',$request->id_livre)->where('id_user','=',$request->id_user)->update(['reaction'=>1]);
         }
     }
