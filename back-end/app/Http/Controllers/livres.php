@@ -51,4 +51,9 @@ class livres extends Controller
         $livre->update();
         return 'deleted';
     }
+
+    function getlivre($id){
+        $livre=Livre::find($id);
+        return $livre;
+    }
 }
