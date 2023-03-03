@@ -56,7 +56,7 @@
                                 </div>
                                 <div>
                                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                                    <input type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" >
+                                    <input @change="" type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" >
                                 </div>
                                 <div>
                                     <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contenu</label>
@@ -100,10 +100,69 @@
                 id:null,
                 nom:null
             },
-            categories:''
+            categories:'',
+            image:{
+                file:'',
+                url:'',
+                selectedCat:''
+            },
+            pdf:{
+                file:'',
+                url:''
+            }
         }
     },
     methods:{
+        uploadimage(e){
+            this.image.file = e.target.files[0];
+        },
+        uploadfile(e){
+            this.pdf.file = e.target.files[0];
+        },
+        async modifierBook(){
+            if(this.image.file!=''){
+                const signatureImage = await fetch('http://127.0.0.1:8000/api/livre/getsignature').then((data) => (data.json()));
+                let formImage = new FormData();
+                formImage.append('file', this.image.file);
+                formImage.append("api_key", 296547854239657)
+                formImage.append("signature",signatureImage.signature)
+                formImage.append("timestamp",signatureImage.timestamp)
+                formImage.append("folder", "books");
+                await axios.post("https://api.cloudinary.com/v1_1/dxn7gskyn/auto/upload",formImage)
+                .then((res) => {
+                    this.image.url=res.data.url;
+                })
+            }
+            if(this.pdf.file!=''){
+                const signatureImage = await fetch('http://127.0.0.1:8000/api/livre/getsignature').then((data) => (data.json()));
+                let formImage = new FormData();
+                formImage.append('file', this.pdf.file);
+                formImage.append("api_key", 296547854239657)
+                formImage.append("signature",signatureImage.signature)
+                formImage.append("timestamp",signatureImage.timestamp)
+                formImage.append("folder", "books");
+                await axios.post("https://api.cloudinary.com/v1_1/dxn7gskyn/auto/upload",formImage)
+                .then((res) => {
+                    this.pdf.url=res.data.url;
+                })
+            }
+            let livre = new FormData();
+            livre.append('id', this.livre.id);
+            livre.append('nom', this.nom);
+            livre.append("image", this.image.url)
+            livre.append("file",this.pdf.url)
+            livre.append("id_cat",this.selectedCat)
+            axios.post('http://127.0.0.1:8000/api/livre/updateLivre',livre)
+            .then((res)=>{
+                if(res.data="added"){
+                        this.$swal.fire(
+                            'Succes!',
+                            'Livre a été bien ajouté',
+                            'success'
+                    )
+                }
+            })
+        },
         getLivres(){
             axios({
                 method: 'GET',
@@ -141,7 +200,6 @@
                     this.livre.id=res.data.id;
             });
             this.getcate();
-
             var modal = document.getElementById("myModal");
             var span = document.getElementsByClassName("close")[0];
             modal.style.display = "block";

@@ -56,4 +56,8 @@ class livres extends Controller
         $livre=Livre::find($id);
         return $livre;
     }
+
+    public function updateLivre(Request $request){
+        return $request;
+    }
 }

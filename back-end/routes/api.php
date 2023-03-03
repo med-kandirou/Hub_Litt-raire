@@ -8,6 +8,7 @@ use App\Http\Controllers\categories;
 use App\Http\Controllers\groupes;
 use App\Http\Controllers\livres;
 
+
 // use App\Http\Controllers\;
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::get('/user/getLivrebyCat/{cat}', [Users::class, 'getLivrebyCat']);
 Route::get('/user/getLivrebyNom/{nom}', [Users::class, 'getLivrebyNom']);
 Route::get('/user/getLivres/{id}', [Users::class, 'getLivres']);
 
+
 Route::patch('/user/like', [Users::class, 'like']);
 Route::patch('/user/dislike', [Users::class, 'dislike']);
 //admin
@@ -64,6 +66,8 @@ Route::get('/livre/getsignature', [livres::class, 'getsignature']);
 Route::post('/livre/addLivre', [livres::class, 'addLivre']);
 Route::get('/livre/getlivre/{id}', [livres::class, 'getlivre']);
 Route::patch('/livre/supprimerLivre/{livre}', [livres::class, 'supprimerLivre']);
+Route::post('/livre/updateLivre', [Livres::class, 'updateLivre']);
+
 
 
 
