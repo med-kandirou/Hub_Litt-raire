@@ -219,7 +219,14 @@ class Users extends Controller
     }
 
     public function getGroups($id){
-        
+        return DB::table('groups')
+        ->leftJoin('membres', function ($join) use($id) {
+            $join->on('groups.id', '=', 'membres.id_group')
+                ->where('membres.id_user', '=', $id);
+        })
+        ->select('groups.id','groups.nom','groups.description','groups.created_at','users.nom','membres.id as id_membre')
+        ->join('users','users.id','=','groups.id_user')
+        ->get();
     }
     
 }
