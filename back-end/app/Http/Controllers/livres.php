@@ -59,13 +59,12 @@ class livres extends Controller
 
     public function updateLivre(Request $request){
         $livre =Livre::find($request->id);
-        $livre->nom=$request->id;
         $livre->nom=$request->nom;
         if($request->image!=null){
             $livre->image=$request->image;
         }
         if($request->file!=null){
-            $livre->file=$request->file;
+            $livre->pdf=$request->file;
         }
         if($request->id_cat!=null){
             $livre->id_cat=$request->id_cat;

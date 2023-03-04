@@ -56,11 +56,11 @@
                                 </div>
                                 <div>
                                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                                    <input @change="" type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" >
+                                    <input type="file" @change="uploadimage" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" >
                                 </div>
                                 <div>
                                     <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contenu</label>
-                                    <input type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" >
+                                    <input type="file" @change="uploadfile" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" >
                                 </div>
                                 <div>
                                     <select v-model="livre.selectedCat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -122,26 +122,26 @@
         async modifierBook(){
             if(this.image.file!=''){
                 const signatureImage = await fetch('http://127.0.0.1:8000/api/livre/getsignature').then((data) => (data.json()));
-                await axios.post("https://api.cloudinary.com/v1_1/dxn7gskyn/auto/upload",{
-                    file:this.pdf.file,
-                    api_key: 29654785423965,
-                    signature:signatureImage.signature,
-                    timestamp:signatureImage.timestamp,
-                    folder: "books"
-                })
+                let formImage = new FormData();
+                formImage.append('file', this.image.file);
+                formImage.append("api_key", 296547854239657)
+                formImage.append("signature",signatureImage.signature)
+                formImage.append("timestamp",signatureImage.timestamp)
+                formImage.append("folder", "books");
+                await axios.post("https://api.cloudinary.com/v1_1/dxn7gskyn/auto/upload",formImage)
                 .then((res) => {
                     this.image.url=res.data.url;
                 })
             }
             if(this.pdf.file!=''){
-                const signatureImage = await fetch('http://127.0.0.1:8000/api/livre/getsignature').then((data) => (data.json()));
-                await axios.post("https://api.cloudinary.com/v1_1/dxn7gskyn/auto/upload",{
-                    file:this.pdf.file,
-                    api_key: 29654785423965,
-                    signature:signatureImage.signature,
-                    timestamp:signatureImage.timestamp,
-                    folder: "books"
-                })
+                const signaturepdf = await fetch('http://127.0.0.1:8000/api/livre/getsignature').then((data) => (data.json()));
+                let formImage = new FormData();
+                formImage.append('file', this.pdf.file);
+                formImage.append("api_key", 296547854239657)
+                formImage.append("signature",signaturepdf.signature)
+                formImage.append("timestamp",signaturepdf.timestamp)
+                formImage.append("folder", "books");
+                await axios.post("https://api.cloudinary.com/v1_1/dxn7gskyn/auto/upload",formImage)
                 .then((res) => {
                     this.pdf.url=res.data.url;
                 })
@@ -154,14 +154,14 @@
                 id_cat:this.livre.selectedCat
             })
             .then((res)=>{
-                // if(res.data="added"){
-                //         this.$swal.fire(
-                //             'Succes!',
-                //             'Livre a été bien ajouté',
-                //             'success'
-                //     )
-                // }
-                console.log(res);
+                if(res.data="added"){
+                        this.$swal.fire(
+                            'Succes!',
+                            'Livre a été bien ajouté',
+                            'success'
+                    )
+                }
+                this.getLivres();
             })
         },
         getLivres(){
