@@ -217,6 +217,10 @@ class Users extends Controller
         }
 
     }
+
+    public function getGroups($id){
+        
+    }
     
 }
 
