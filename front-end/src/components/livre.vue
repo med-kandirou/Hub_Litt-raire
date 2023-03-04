@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a :href="file" target="_blank">
-            <img class="rounded-t-lg" :src="image" />
+            <img class="rounded-t-lg h-full" :src="image" />
         </a>
         <div class="p-5">
             <a href="#">
