@@ -159,10 +159,9 @@ export default{
                     if(res.data=='added'){
                         Toast.fire({
                         icon: 'success',
-                        title: 'Ajouté au favories'
+                        title: 'Vous avez rejoinez de groupe'
                         })
-                        this.nom='';
-                        this.description='';
+                        this.getGroups();
                     }
                     else{
                         Toast.fire({
