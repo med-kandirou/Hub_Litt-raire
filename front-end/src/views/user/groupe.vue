@@ -4,8 +4,8 @@
     
     <div class="flex">
         <div class="w-1/2">
-            <ul v-for="membre in membres">
-                <div class="flex justify-center">
+            <div v-for="membre in membres">
+                <div class="flex mb-3">
                     <div>
                         <img class="rounded-full w-20 mr-2" src="https://flowbite.com/application-ui/demo/images/users/jese-leos.png">
                     </div>
@@ -14,7 +14,7 @@
                         <p class="text-gray-600">{{membre.email}}</p>
                     </div>
                 </div>
-            </ul>
+            </div>
         </div>
         <div class="w-1/2">
             <h1 class="text-center text-2xl font-extrabold tracking-tight leading-none text-gray-900">Messages</h1>
