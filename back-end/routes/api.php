@@ -77,3 +77,4 @@ Route::get('/membres/{id}', [Membres::class, 'getMembres']);
 
 //livres
 Route::post('/messages', [Messages::class, 'sendMessage']);
+Route::get('/messages/{id}', [Messages::class, 'getmessages']);

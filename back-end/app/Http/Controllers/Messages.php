@@ -14,4 +14,11 @@ class Messages extends Controller
         $message->message=$request->message;
         $message->save();
     }
+
+    public function getmessages($id){
+        $message=new Message();
+    }
+
+
+    
 }

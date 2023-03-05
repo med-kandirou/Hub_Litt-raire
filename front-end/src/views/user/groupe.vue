@@ -38,6 +38,15 @@
     let membres = ref([]);
     let message = ref('');
     const user = userStore()
+    function getMessages() {
+        axios({
+            method: 'GET',
+            url: 'http://127.0.0.1:8000/api/messages/'+route.params.id,
+            })
+            .then((res) =>{
+                console.log(res);
+        })
+    }
     function getMembres() {
         axios({
             method: 'GET',
