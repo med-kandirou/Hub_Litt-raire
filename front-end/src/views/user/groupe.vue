@@ -49,16 +49,17 @@
     }
     function send(){
         axios({
-            method: 'Post',
-            url: 'http://127.0.0.1:8000/api/message',
+            method: 'POST',
+            url: 'http://127.0.0.1:8000/api/messages',
             data:{
                 idgroup:route.params.id,
                 iduser:user.id,
-                message:message
+                message:message.value
             }
             })
             .then((res) =>{
                 console.log(res);
+                message.value='';
         })
     }
 
