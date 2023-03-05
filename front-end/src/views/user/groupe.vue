@@ -79,6 +79,7 @@
             .then((res) =>{
                 console.log(res);
                 message.value='';
+                getMessages();
         })
     }
 
