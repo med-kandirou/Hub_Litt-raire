@@ -8,6 +8,7 @@ use App\Http\Controllers\categories;
 use App\Http\Controllers\groupes;
 use App\Http\Controllers\livres;
 use App\Http\Controllers\Membres;
+use App\Http\Controllers\Messages;
 
 // use App\Http\Controllers\;
 /*
@@ -74,3 +75,5 @@ Route::post('/livre/updateLivre', [Livres::class, 'updateLivre']);
 Route::get('/membres/{id}', [Membres::class, 'getMembres']);
 
 
+//livres
+Route::post('/messages', [Messages::class, 'sendMessage']);
