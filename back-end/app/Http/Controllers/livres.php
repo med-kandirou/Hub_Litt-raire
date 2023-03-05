@@ -13,7 +13,6 @@ use App\Models\Livre;
 class livres extends Controller
 {
     public function getsignature(){
-
         $cloudinaryConfig = new CloudConfig([
             "cloud_name" => "dxn7gskyn",
             "api_key" => "296547854239657",
@@ -25,7 +24,6 @@ class livres extends Controller
                 "timestamp" => time(),
                 "folder" => 'books'
             ];
-        
         $data = ['signature' => ApiUtils::signParameters($params, $cloudinaryConfig->apiSecret), 'timestamp' => $timestamp];
         return $data;
     }
