@@ -8,6 +8,7 @@ import profile from '../views/user/profile.vue'
 import groupes from '../views/user/groupes.vue'
 import mesGroupes from '../views/user/mesGroupes.vue'
 import favories from '../views/user/favories.vue'
+import groupe from '../views/user/groupe.vue'
 
 
 //admin
@@ -60,6 +61,11 @@ const routes = [
     component: favories,
   },
   {
+    path: '/user/groupe/:id',
+    name: 'groupe',
+    component: groupe,
+  },
+  {
     path: '/admin/livres',
     name: 'livres_admin',
     component: livres_admin,
@@ -88,7 +94,7 @@ const routes = [
     path: '/:pathMatch(.*)',
     name: 'notfound',
     component: notfound
-  },
+  }
 ]
 
 const router = createRouter({

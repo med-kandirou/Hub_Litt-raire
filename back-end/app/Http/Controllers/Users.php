@@ -110,20 +110,11 @@ class Users extends Controller
     
     public function rejoindreGroup(Request $request)
     {
-        $count=Membre::select('id_group','id_user')
-        ->where('id_group','=', $request->id_group)
-        ->where('id_user','=', $request->id_user)
-        ->count();
-        if($count==0){
-            $membre=new Membre();
-            $membre->id_group=$request->id_group;
-            $membre->id_user=$request->id_user;
-            $membre->save();
-            return 'added';
-        }
-        else{
-           return "deja";
-        }
+        $membre=new Membre();
+        $membre->id_group=$request->id_group;
+        $membre->id_user=$request->id_user;
+        $membre->save();
+        return 'added';
     }
 
 

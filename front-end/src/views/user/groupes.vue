@@ -148,7 +148,8 @@ export default{
                 }
                 })
                 .then((res) =>{
-                    const Toast = this.$swal.mixin({
+                    if(res.data=='added'){
+                        const Toast = this.$swal.mixin({
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
@@ -159,20 +160,12 @@ export default{
                             toast.addEventListener('mouseleave', Swal.resumeTimer)
                         }
                         })
-                    if(res.data=='added'){
                         Toast.fire({
                         icon: 'success',
                         title: 'Vous avez rejoinez de groupe'
                         })
                         this.getGroups();
                     }
-                    else{
-                        Toast.fire({
-                        icon: 'error',
-                        title: 'Déja integrer dans le groupe'
-                        })
-                    }
-                    
                 })
         },
         toggle(){
