@@ -23,7 +23,7 @@
         </div>
 
     </div><br><br>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    <div class="ml-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <div v-for="livre in livres">
             <Livre page="livre" :reaction="livre.reaction" @dislike="dislike" @like="like" @ajouterFavorie="ajouterFavorie" :id_livre="livre.idlivre" :image="livre.image" :nom="livre.nom_livre" :file="livre.pdf" :cat="livre.nom_cat" :date="livre.created_at"  />
         </div>      
