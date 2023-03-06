@@ -16,7 +16,7 @@ class Messages extends Controller
     }
 
     public function getmessages($id){
-        return Message::select('messages.message','users.nom','users.prenom')
+        return Message::select('messages.message','users.nom','users.prenom','messages.id_user')
         ->join('users','users.id','messages.id_user')
         ->where('messages.id_group','=',$id)
         ->get();
