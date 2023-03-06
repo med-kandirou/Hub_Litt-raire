@@ -5,7 +5,7 @@
     <div class="flex">
         <div class="w-1/2">
             <h1 class="text-center text-2xl font-extrabold tracking-tight leading-none text-gray-900">membres</h1>
-            <div v-for="membre in membres">
+            <div class="ml-10" v-for="membre in membres">
                 <div class="flex mb-3">
                     <div>
                         <img class="rounded-full w-20 mr-2" src="https://flowbite.com/application-ui/demo/images/users/jese-leos.png">
@@ -22,7 +22,7 @@
                 <div class="overflow-y-auto h-80">
                     <div v-for="message in messages">
                     <dir v-if="message.id_user==user.id">
-                        <div class="flex justify-end">
+                        <div class="flex justify-end mr-10">
                             <div>
                                 <p>{{message.nom}} {{message.nom}}</p>
                                 <p class="border border-1 p-2 rounded-md bg-green-300 text-white">{{message.message}}</p>
@@ -30,7 +30,7 @@
                         </div>
                     </dir>
                     <div v-else>
-                        <div class="flex justify-start">
+                        <div class="flex justify-start ml-10">
                             <div>
                                 <p>{{message.nom}} {{message.nom}}</p>
                                 <p class="border border-1 p-2 rounded-md bg-green-700 text-white">{{message.message}}</p>
