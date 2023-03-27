@@ -99,7 +99,7 @@ export default{
                   'error'
                 )
               }
-              else
+              else if(res.data.user!=null)
               {
                   this.user.id=res.data.user.id;
                   this.user.nom=res.data.user.nom;
@@ -120,6 +120,13 @@ export default{
                       location.href='/admin/livres';
                     }
                   }})
+              }
+              else{
+                this.$swal.fire(
+                  'Oops!',
+                  'Email or mot de passe invalid !',
+                  'error'
+                )
               }
             })
       },

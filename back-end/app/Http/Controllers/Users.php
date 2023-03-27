@@ -8,10 +8,11 @@ use App\Models\Group;
 use App\Models\Livre;
 use App\Models\Membre;
 use App\Models\Reaction;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Hash;
 
 
 class Users extends Controller
@@ -19,11 +20,24 @@ class Users extends Controller
    
     public function login(Request $request)
     {
-        $user = DB::table('Users')->where('email',$request->input('email'))->where('password',$request->input('password'))->first();
-        $response=[
-            'user'=>$user
-        ];
-        return $response;
+        try{
+            $user = DB::table('Users')->where('email',$request->input('email'))->first();
+            if (Hash::check($request->input('password'),$user->password)) {
+                $response=[
+                    'user'=>$user
+                ];
+                return $response; 
+            } else {
+                $response=[
+                    'user'=>null
+                ];
+                return $response; 
+            }
+        }
+        catch(Exception){
+            return false;
+        }
+        
     }
 
     public function signup(Request $request)
@@ -47,7 +61,7 @@ class Users extends Controller
             $user->nom=$request->input('nom');
             $user->prenom=$request->input('prenom');
             $user->email=$request->input('email');
-            $user->password=$request->input('password');
+            $user->password=Hash::make($request->input('password'));
             $user->role=0;
             $user->save();
             return 'inserted';
