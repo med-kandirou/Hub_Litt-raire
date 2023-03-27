@@ -81,7 +81,9 @@ class Users extends Controller
        $user->nom=$request->input('nom');
        $user->prenom=$request->input('prenom');
        $user->email=$request->input('email');
-       $user->password=$request->input('password');
+       if(strlen($user->password)>0){
+        $user->password=Hash::make($request->input('password'));
+       }
        $user->save();
        return ['etat'=>'updated'];
     }

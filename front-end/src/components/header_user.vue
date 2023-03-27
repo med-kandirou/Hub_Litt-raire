@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import { initCarousels, initCollapses, initDials, initDismisses, initDrawers, initDropdowns, initModals, initPopovers, initTabs, initTooltips } from 'flowbite'
 import axios from 'axios';
 import { userStore } from '@/stores/userStore'
 export default{
@@ -65,6 +66,18 @@ export default{
     setup(){
       const user = userStore()
       return { user }
+    },
+    mounted(){
+      initCarousels();
+        initCollapses();
+        initDials();
+        initDismisses();
+        initDrawers();
+        initDropdowns();
+        initModals();
+        initPopovers();
+        initTabs();
+        initTooltips();
     },
     data(){
       return {
