@@ -42,7 +42,7 @@
                 nom:this.user.nom,
                 prenom:this.user.prenom,
                 email:this.user.email,
-                password:this.user.password
+                password:''
             }
         },
         methods:{
