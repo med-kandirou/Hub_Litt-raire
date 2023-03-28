@@ -24,7 +24,7 @@
                     <dir v-if="message.id_user==user.id">
                         <div class="flex justify-end mr-10">
                             <div>
-                                <p>{{message.nom}} {{message.nom}}</p>
+                                <p>{{message.nom}} {{message.prenom}}</p>
                                 <p class="border border-1 p-2 rounded-md bg-green-300 text-white">{{message.message}}</p>
                             </div> 
                         </div>
@@ -32,7 +32,7 @@
                     <div v-else>
                         <div class="flex justify-start ml-10">
                             <div>
-                                <p>{{message.nom}} {{message.nom}}</p>
+                                <p>{{message.nom}} {{message.prenom}}</p>
                                 <p class="border border-1 p-2 rounded-md bg-green-700 text-white">{{message.message}}</p>
                             </div> 
                         </div>

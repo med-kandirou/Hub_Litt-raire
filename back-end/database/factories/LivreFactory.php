@@ -20,8 +20,8 @@ class LivreFactory extends Factory
     {
         return [
             'nom' => $this->faker->name(),
-            'image' => 'https://res.cloudinary.com/dxn7gskyn/image/upload/v1677273761/books/q5boqmb3y6lugprccxm7.jpg',
-            'pdf' => 'https://res.cloudinary.com/dxn7gskyn/image/upload/v1677273777/books/qqcdqj3tizdl1z3upe5n.pdf',
+            'image' => 'https://res.cloudinary.com/dxn7gskyn/image/upload/v1680001696/book3_bvizxs.png',
+            'pdf' => 'https://res.cloudinary.com/dxn7gskyn/image/upload/v1680001865/nodejs_o20sfo.pdf',
             'isArchived' => 0,
             'id_cat' => categorie::factory()
         ];
